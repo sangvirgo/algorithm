@@ -21,60 +21,66 @@ struct douList {
 typedef douList* doulist;
 
 doulist createDouList(int x) {
-    doulist temp=new douList;
-    temp->head=new Node;
-    temp->head->data=x;
-    temp->head->pre=NULL;
-    temp->head->next=NULL;
-    temp->tail=temp->head;
-    return temp;
-};
+    doulist temp = new douList;  // Tạo một đối tượng douList mới và gán địa chỉ của nó cho con trỏ temp.
+    temp->head = new Node;  // Tạo một nút mới và gán địa chỉ của nó cho thành phần head của temp.
+    temp->head->data = x;  // Gán giá trị x cho thành phần data của nút head.
+    temp->head->pre = NULL;  // Không có nút trước nút head, nên gán con trỏ pre của nút head bằng NULL.
+    temp->head->next = NULL;  // Không có nút sau nút head, nên gán con trỏ next của nút head bằng NULL.
+    temp->tail = temp->head;  // Gán con trỏ tail của danh sách về nút head, vì danh sách chỉ có một nút.
 
-void insertFirst(doulist &a, int x) {
-    node temp=new Node;
-    temp->data=x;
-    temp->next=a->head;
-    temp->pre=NULL;
-
-        if(a->head!=NULL) {
-            a->head->pre=temp;
-        }
-        else if(a->tail=NULL) {
-            a->tail=temp;
-        }
-        a->head=temp;
+    return temp;  // Trả về đối tượng douList mới, chứa địa chỉ của danh sách liên kết kép đã tạo.
 }
 
-void insertLast(doulist &a, int x) {
-    node temp=new Node;
-    temp->data=x;
-    temp->next=NULL;
-    temp->pre=NULL;
 
-    if(a->head==NULL) {
-        a->head=temp;
-        a->tail=temp;
+void insertFirst(doulist &a, int x) {
+    node temp = new Node;  // Tạo một nút mới (node) và gán địa chỉ của nó cho con trỏ temp.
+    temp->data = x;  // Gán giá trị x cho thành phần data của nút temp.
+    temp->next = a->head;  // Gán con trỏ next của temp bằng con trỏ head của danh sách liên kết a.
+    temp->pre = NULL;  // Không có nút trước temp, nên gán con trỏ pre của temp bằng NULL.
+
+    // Kiểm tra xem danh sách liên kết có rỗng không.
+    if (a->head != NULL) {
+        a->head->pre = temp;  // Nếu danh sách không rỗng, gán con trỏ pre của nút đầu tiên về temp.
+    } else if (a->tail == NULL) {
+        a->tail = temp;  // Nếu danh sách trống, gán con trỏ tail của danh sách về temp.
     }
-    else {
-        temp->pre=a->tail;
-        a->tail->next=temp;
-        a->tail=temp;
+
+    a->head = temp;  // Gán con trỏ head của danh sách về temp, temp giờ là đầu danh sách.
+}
+
+
+void insertLast(doulist &a, int x) {
+    node temp = new Node;  // Tạo một nút mới.
+    temp->data = x;  // Gán giá trị x cho thành phần data của nút temp.
+    temp->next = NULL;  // Không có nút tiếp theo, vì nút temp sẽ là nút cuối cùng.
+    temp->pre = NULL;  // Không có nút trước nút temp.
+
+    if (a->head == NULL) {  // Kiểm tra nếu danh sách đang rỗng.
+        a->head = temp;  // Nếu rỗng, gán nút temp làm đầu danh sách.
+        a->tail = temp;  // Nếu rỗng, gán nút temp làm cuối danh sách.
+    } else {
+        temp->pre = a->tail;  // Gán con trỏ pre của temp là nút cuối cùng hiện tại.
+        a->tail->next = temp;  // Gán con trỏ next của nút cuối cùng là temp.
+        a->tail = temp;  // Gán con trỏ tail của danh sách về temp, temp giờ là nút cuối cùng.
     }
 }
 
 void insertMiddle(doulist &a, int pos, int x, int n) {
-    if(pos==0) insertFirst(a, x);
-    else if(pos==n) insertLast(a, x);
-    else {node p=a->head;
-    for(int i(1); i<pos; i++) {
-        p=p->next;
-    }
-    node temp=new Node;
-    temp->data=x;
-    temp->next=p->next;
-    temp->pre=p;
-    p->next->pre=temp;
-    p->next=temp;
+    if (pos == 0) {
+        insertFirst(a, x);  // Gọi hàm chèn vào đầu nếu vị trí là 0.
+    } else if (pos == n) {
+        insertLast(a, x);  // Gọi hàm chèn vào cuối nếu vị trí là cuối cùng.
+    } else {
+        node p = a->head;
+        for (int i(1); i < pos; i++) {
+            p = p->next;  // Duyệt đến vị trí cần chèn.
+        }
+        node temp = new Node;  // Tạo một nút mới.
+        temp->data = x;  // Gán giá trị x cho thành phần data của nút temp.
+        temp->next = p->next;  // Gán con trỏ next của temp là con trỏ next của nút hiện tại.
+        temp->pre = p;  // Gán con trỏ pre của temp là nút hiện tại.
+        p->next->pre = temp;  // Gán con trỏ pre của nút tiếp theo là temp.
+        p->next = temp;  // Gán con trỏ next của nút hiện tại là temp.
     }
 }
 
