@@ -10,73 +10,108 @@ a trong luong
 c la gia tri su dung
 xopt la gia tri toi uu
 */
-void init(void) {
+void init()
+{
     ifstream file("caitui.txt");
-    if(!file.is_open()) {
+    if (!file.is_open())
+    {
         cout << "Failed to open the file." << endl;
-        return ;
+        return;
     }
 
     file >> n >> b;
     cout << "So luong do vat: " << n << endl;
-    cout << "Trong luong tui: " << b << endl;
+    cout << "Trong luong toi da: " << b << endl;
 
-    for(int i=1; i<=n; i++) {
-        file >> a[i] >> c[i];
+    for (int i = 1; i <= n; i++)
+    {
+        file >> c[i];
     }
+    for (int i = 1; i <= n; i++)
+    {
+        file >> a[i];
+    }
+    cout << "Vector trong luong: ";
+    for (int i = 1; i <= n; i++)
+    {
+        cout << a[i] << " ";
+    }
+    cout << endl;
+    cout << "Vector gia tri su dung: ";
+    for (int i = 1; i <= n; i++)
+    {
+        cout << c[i] << " ";
+    }
+    cout << endl;
+    file.close();
 }
 
-void result(void) {
+void result(void)
+{
     cout << "Gia tri su dung toi uu: " << fopt << endl;
-    cout << "Cau hinh toi uu la: " ;
-    for(int i=1; i<=n; i++) {
+    cout << "Cau hinh toi uu la: ";
+    for (int i = 1; i <= n; i++)
+    {
         cout << xopt[i] << " ";
     }
     cout << endl;
 }
 
-bool check_weight() {
-    int weight=0;
-    for(int i=1; i<=n; i++) {
-        weight+=a[i]*x[i];
+bool check_weight()
+{
+    int weight = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        weight += a[i] * x[i];
     }
-    return weight<=b;
+    return weight <= b;
 }
 
-void sum_up() {
-    int sum=0;
-    for(int i=1; i<=n; i++) {
-        sum+=x[i]*c[i];
+void sum_up()
+{
+    int sum = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        sum += x[i] * c[i];
     }
-    if(fopt<sum) {
-        fopt=sum;
-        for(int i=1; i<=n; i++) {
-            xopt[i]=x[i];
+    if (fopt < sum)
+    {
+        fopt = sum;
+        for (int i = 1; i <= n; i++)
+        {
+            xopt[i] = x[i];
         }
     }
 }
 
-void Try(int i) {
-    for(int j=0; j<=1; j++) {
-        x[i]=j;
-        if(i==n) {
-            if(check_weight()) {
+void Try(int i)
+{
+    for (int j = 0; j <= 1; j++)
+    {
+        x[i] = j;
+        if (i == n)
+        {
+            if (check_weight())
+            {
                 sum_up();
                 cout << "Cau hinh hien tai: ";
-                for(int k=1; k<=n; k++) {
+                for (int k = 1; k <= n; k++)
+                {
                     cout << x[k] << " ";
                 }
                 cout << "\t gia tri hien tai: " << fopt;
                 cout << endl;
             }
         }
-        else {
-            Try(i+1);
+        else
+        {
+            Try(i + 1);
         }
     }
 }
 
-int main() {
+int main()
+{
     init();
     Try(1);
     result();
