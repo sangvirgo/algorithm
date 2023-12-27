@@ -4,14 +4,14 @@
 
 using namespace std;
 #define MAX 20
-int n, p[MAX], b[MAX], c[MAX][MAX], count = 0;
+int n, p[MAX], check[MAX], c[MAX][MAX], count = 0;
 int a[MAX], xopt[MAX];
 int can, cmin, fopt;
 int Min_Matrix();
 
 void init()
 {
-    ifstream file("nguoidulich2.txt");
+    ifstream file("nguoidulich.txt");
     if (!file.is_open())
     {
         cout << "Cannot open file!" << endl;
@@ -32,13 +32,13 @@ void init()
     a[1] = 1;
     for (int i = 1; i <= n; i++)
     {
-        b[i] = 1;
+        check[i] = 1;
     }
 }
 
 int Min_Matrix()
 {
-    int min = c[1][1];
+    int min = c[1][2];
     for (int i = 1; i <= n; i++)
     {
         for (int j = 1; j <= n; j++)
@@ -72,6 +72,7 @@ void result()
         cout << xopt[i] << " ";
     }
     cout << endl;
+    cout << "So lan ham chay: " << count << endl;
 }
 
 void Swap()
@@ -84,7 +85,7 @@ void Swap()
 
 void update()
 {
-    int sum = can + c[a[n]][a[1]];
+    int sum = can + c[a[n]][a[1]]; // important
     if (sum < fopt)
     {
         Swap();
@@ -96,11 +97,11 @@ void Try(int i)
 {
     for (int j = 2; j <= n; j++)
     {
-        if (b[j])
+        if (check[j])
         {
             a[i] = j;
-            b[j] = 0;
-            can = can + c[a[i - 1]][a[i]];
+            check[j] = 0;
+            can += c[a[i - 1]][a[i]];
             if (i == n)
             {
                 update();
@@ -110,7 +111,7 @@ void Try(int i)
                 count++;
                 Try(i + 1);
             }
-            b[j] = 1;
+            check[j] = 1;
             can = can - c[a[i - 1]][a[i]];
         }
     }

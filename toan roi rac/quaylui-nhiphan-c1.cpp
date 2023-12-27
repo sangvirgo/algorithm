@@ -9,9 +9,6 @@ void init(void) {
     cout << "Nhap vao n: "; 
     cin >> n;
     a=new int[n+1];
-    for(int i=1; i<=n; i++) {
-        a[i]=i;
-    }
 }
 
 void print(void){
