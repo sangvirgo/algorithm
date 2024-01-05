@@ -11,7 +11,7 @@ int Min_Matrix();
 
 void init()
 {
-    ifstream file("nguoidulich.txt");
+    ifstream file("nguoidulich1.txt");
     if (!file.is_open())
     {
         cout << "Cannot open file!" << endl;
