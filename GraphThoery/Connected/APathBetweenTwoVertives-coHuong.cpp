@@ -3,17 +3,30 @@ using namespace std;
 #define MAX 100
 /*
 tim duong di giua hai dinh
-9 8 1 7
+10 10 1 10
 1 2
 2 3
 2 4
 3 6
 3 7
 6 7
+7 5 
+5 10
 5 8
-5 9
+8 9
 
 
+10 10 8 10
+1 2
+2 3
+2 4
+3 6
+3 7
+6 7
+7 5 
+5 10
+5 8
+8 9
 */
 
 int vertices, edges, start, endd;
@@ -27,7 +40,7 @@ void init() {
     for(int i=0; i<edges; i++) {
         int x, y; cin >> x >> y;
         adj[x].push_back(y);
-        adj[y].push_back(x);
+        // adj[y].push_back(x);
     }
     memset(visited, false, sizeof(visited));
 }
