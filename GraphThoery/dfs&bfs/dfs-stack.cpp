@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define MAX 100
+
 /*
 input 
 9 9
@@ -13,6 +14,9 @@ input
 3 9
 5 8
 8 9
+
+
+
 1 2 4 3 6 7 9 8 5
 */
 int vertices, edges;
@@ -29,18 +33,31 @@ void init() {
     memset(visited, false, sizeof(visited));
 }
 
-void DFS(int n) {
-    cout << n << " ";
-    visited[n]=true;
-    for(auto it:adj[n]) {
-        if(!visited[it]) {
-            DFS(it);
+void dfs(int a) {
+    stack<int> s;
+    s.push(a);
+    cout << a << " ";
+    visited[a]=true;
+
+    while(!s.empty()) {
+        int temp=s.top();
+        s.pop();
+        // cout << temp << " ";
+
+        for(auto it: adj[temp]) {
+            if(!visited[it]) {
+                cout << it << " ";
+                s.push(temp);
+                s.push(it);
+                visited[it]=true;
+                break;
+            }
         }
     }
 }
 
 int main() {
 init();
-DFS(1);
+dfs(1);
 return 0;
 }
