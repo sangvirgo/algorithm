@@ -23,8 +23,14 @@ int main() {
     int n = 6;
     int b[] = {2, 3, 8, 13, 15, 21, 25};
     int m = 7;
-    
+    clock_t start, end;
+
+    start = clock();
 
     Dem(a, n, b, m);
+
+    end = clock();
+    double time_taken=double(end-start)/double(CLOCKS_PER_SEC);
+    cout << "\nTime taken by program is: " << fixed<< time_taken << setprecision(15) << endl;
     return 0;
 }
