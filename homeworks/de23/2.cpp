@@ -76,27 +76,50 @@ void inputList(LIST &a) {
     display(a);
 }
 
-void deleteNode(LIST &a) {
-    NODE* current = a.pHead;
+// void deleteNode(LIST &a) {
+//     NODE* current = a.pHead;
+//     NODE* previous=nullptr;
+//     while(current!=nullptr) {
+//         if(isArmstrong(current->Key)) {
+//             // the node is at the top
+//             if(previous==nullptr) {
+//                 a.pHead=current->pNext;
+//                 delete current;
+//                 current=a.pHead;
+//             } else {
+//                 previous->pNext=current->pNext;
+//                 // the node is at the end
+//                 if(current->pNext==nullptr) {
+//                     a.pTail=previous;
+//                 }
+//                 delete current;
+//                 current=previous->pNext;
+//             } 
+//         } else {
+//             // if it is not an armstrong number, ignore it
+//             previous=current;
+//             current=current->pNext;
+//         }
+//     }
+// }
+
+void deleteNode(LIST& a) {
+    NODE* current=a.pHead;
     NODE* previous=nullptr;
+
     while(current!=nullptr) {
         if(isArmstrong(current->Key)) {
-            // the node is at the top
             if(previous==nullptr) {
                 a.pHead=current->pNext;
                 delete current;
                 current=a.pHead;
             } else {
                 previous->pNext=current->pNext;
-                // the node is at the end
-                if(current->pNext==nullptr) {
-                    a.pTail=previous;
-                }
-                delete current;
-                current=previous->pNext;
+                NODE* temp = current;
+                current = current->pNext;
+                delete temp;
             } 
         } else {
-            // if it is not an armstrong number, ignore it
             previous=current;
             current=current->pNext;
         }

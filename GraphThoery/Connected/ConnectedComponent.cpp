@@ -25,6 +25,22 @@ input
     5 8
     8 9
     10 10 
+
+    7 14
+    1 2
+    1 6
+    2 1
+    3 1
+    4 1
+    4 2
+    4 6
+    5 6
+    6 1
+    6 3 
+    6 4
+    6 5
+    7 1
+    7 6
 */
 int vertices, edges;
 vector<int> adj[MAX];
@@ -35,7 +51,7 @@ void init() {
     for(int i=1; i<=edges; i++) {
         int x, y; cin >> x >> y;
         adj[x].push_back(y);
-        adj[y].push_back(x);
+        // adj[y].push_back(x);
     }
     memset(visited, false, sizeof(visited));
 }
