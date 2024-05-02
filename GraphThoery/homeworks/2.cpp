@@ -30,6 +30,7 @@ ds canh thanh ds ke
 3 4 9
 4 3 8
 
+ 
 
 4
 3 2 3 4
@@ -50,21 +51,7 @@ vector<int> resultWeight[MAX];
 void input() {
     cin >> vertices >> edges;
     string line;
-    getline(cin, line);
-    if(line.length()==5) hasWeight=1;
-    for (int i = 1; i <= edges; i++) {
-        int u, v, w;
-        cin >> u >> v;
-        if(hasWeight) {
-            cin >> w;
-            result[u].push_back(v);
-            result[v].push_back(u);
-            resultWeight[u].push_back(w);
-        } else {
-            result[u].push_back(v);
-            result[v].push_back(u);
-        }
-    }
+    
 }
 
 
@@ -79,10 +66,11 @@ void output() {
         }
         cout << endl;
     }
+
     if(hasWeight) {
         temp=0;
         for(int i=1; i<=vertices; i++) {
-            temp+=result[i].size();
+            temp+=resultWeight[i].size();
             cout << temp << " ";
             for(int j=0; j<resultWeight[i].size(); j++) {
                 cout << resultWeight[i][j] << " ";
@@ -90,11 +78,11 @@ void output() {
             cout << endl;
         }
     }
+
 }
 
 int main() {
 input();
 output();
-// cout << hasWeight;
 return 0;
 }
