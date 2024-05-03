@@ -101,7 +101,7 @@ void prim(int u) {
     }
     for(auto it: mst) {
         result[it.u][it.v]=it.w;
-        if(!isDirected) result[it.v][it.u]=it.w;
+        if(isDirected) result[it.v][it.u]=it.w;
     }
 }
 
