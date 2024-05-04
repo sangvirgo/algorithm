@@ -37,7 +37,6 @@ Expected Output
 int vertices, isDirected=1;
 vector<pair<int, int>> adj[MAX];
 bool used[MAX];
-vector<vector<int>> result(MAX, vector<int>(MAX, 0));
 vector<vector<int>> arr(MAX, vector<int>(MAX, 0));
 struct Edge {
     int u, v, w;
@@ -99,9 +98,10 @@ void prim(int u) {
         mst.push_back({x, y, min_w});
         used[x]=true;
     }
+    arr.assign(MAX, vector<int>(MAX, 0));
     for(auto it: mst) {
-        result[it.u][it.v]=it.w;
-        if(isDirected) result[it.v][it.u]=it.w;
+        arr[it.u][it.v]=it.w;
+        if(isDirected) arr[it.v][it.u]=it.w;
     }
 }
 
@@ -109,7 +109,7 @@ void output() {
     cout << vertices << endl;
     for(int i=1; i<=vertices; i++) {
         for(int j=1; j<=vertices; j++) {
-            cout << result[i][j] << " ";
+            cout << arr[i][j] << " ";
         }
         cout << endl;
     }
