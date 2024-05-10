@@ -25,11 +25,11 @@ do thi VO HUONG co duong di euler:
 +co hai dinh bat le(bat dau tu dinh bac le 1 va ket thuc o dinh bac le 2)
 ---------------------------------------------------------------------------------
 do thi CO HUONG co chu trinh euler:
-+cac dinh co bac khac 0 cua do thi cung mot tp lien thong
++cac dinh co bac khac 0 cua do thi cung mot tp lien thong yeu
 +so bac vao cua moi dinh bang so bac ra cua moi dinh
 
 do thi CO HUONG co duong di euler:
-+cac dinh co bac khac 0 cua do thi cung mot tp lien thong
++cac dinh co bac khac 0 cua do thi cung mot tp lien thong yeu 
 +ton tai 2 dinh u, v ma deg+(u) - deg-(u) = 1 va deg-(v) - deg+(v) = 1
 */
 
@@ -60,24 +60,25 @@ void init() {
 }
 
 void eulerPath(int v) {
-    stack<int> s;
-    vector<int> EC;
-    s.push(v);
-    while(!s.empty()) {
-        int x=s.top();
-        if(adj[x].size()!=0) {
+    stack<int> st;
+    vector<int> result;
+    st.push(v);
+    while(!st.empty()) {
+        int x = st.top();
+        if(!adj[x].empty()) {
             int y=*adj[x].begin();
-            s.push(y);
-            // xoa phan tu
+            st.push(y);
             adj[x].erase(y);
             adj[y].erase(x);
         } else {
-            EC.push_back(x);
-            s.pop();
+            result.push_back(x);
+            st.pop();
         }
     }
-    reverse(begin(EC), end(EC));
-    for(auto it:EC) cout << it << " ";
+    reverse(result.begin(), result.end());
+    for(auto it: result ) {
+        cout << it << " ";
+    }
 }
 
 int main() {
@@ -85,6 +86,7 @@ init();
 eulerPath(1);
 return 0;
 }
+
 
 /*
 5 6
