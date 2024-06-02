@@ -8,13 +8,14 @@ using namespace std;
 
 void Dem (int a[], int n, int b[], int m){
     int i=0, j=0;
-    while(j<m) {
-        while(i<n && a[i]<b[j]) {
+    while(j<m ) {
+        if(a[i] < b[j] && i<n) {
             i++;
+        } else {
+            j++;
+            cout << i << ", ";
+            i=0;
         }
-        cout << i << ", ";
-        i=0;
-        j++;
     }
 }
 
@@ -23,14 +24,21 @@ int main() {
     int n = 6;
     int b[] = {2, 3, 8, 13, 15, 21, 25};
     int m = 7;
+    // clock_t start, end;
+
+    // start = clock();
+
+    // Dem(a, n, b, m);
+
+    // end = clock();
+    // double time_taken=double(end-start)/double(CLOCKS_PER_SEC);
+    // cout << "\nTime taken by program is: " << fixed<< time_taken << setprecision(15) << endl;
+
     clock_t start, end;
-
     start = clock();
-
     Dem(a, n, b, m);
-
     end = clock();
-    double time_taken=double(end-start)/double(CLOCKS_PER_SEC);
-    cout << "\nTime taken by program is: " << fixed<< time_taken << setprecision(15) << endl;
+    double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "\nTime taken by program is: " << fixed << time_taken << setprecision(20) << endl;
     return 0;
 }
