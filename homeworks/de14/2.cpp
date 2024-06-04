@@ -150,6 +150,53 @@ TNODE* findX(TNODE* t, int x) {
     else findX(t->pRight, x);
 }
 
+
+// find min value of tree
+void minValueOfTree(TNODE* t) {
+    while(t->pLeft!=nullptr) {
+        t=t->pLeft;
+    }
+    cout << "\nMin of tree: " << t->key<< endl;
+}
+
+void minValueOfRightTree(TNODE* t) {
+    minValueOfTree(t->pRight);
+}
+
+
+// delete node
+
+// leaf tree
+void deleteLeafTree(TNODE* &t, int x) {
+    if(isEmptyTree(t)) return ;
+    if(t->key==x && t->pLeft==nullptr && t->pRight==nullptr) {
+        delete t;
+        t=nullptr;
+        return;
+    }
+    if(t->key<x) deleteLeafTree(t->pRight, x);
+    else deleteLeafTree(t->pLeft, x);
+}
+
+// xoa node voi mot con
+void deleteWithOneChild(TNODE* &t, int x) {
+    if(isEmptyTree(t)) return ;
+    if((t->key==x && t->pLeft==nullptr && t->pRight!=nullptr)) {
+        t->key=t->pRight->key;
+        delete t->pRight;
+        t->pRight=nullptr;
+        return;
+    }
+    if(t->key==x && t->pRight==nullptr && t->pLeft!=nullptr) {
+        t->key=t->pLeft->key;
+        delete t->pLeft;
+        t->pLeft=nullptr;
+        return;
+    }
+    if(t->key<x) deleteWithOneChild(t->pRight, x);
+    else deleteWithOneChild(t->pLeft, x);
+}
+
 int main() {
 friendlyNumber();
 TNODE* t;
@@ -159,6 +206,10 @@ addTree(t, 25);
 addTree(t, 65);
 addTree(t, 19);
 addTree(t, 40); 
+addTree(t, 62);
+addTree(t, 90);
+addTree(t, 68);
+addTree(t, 100);
 addTree(t, 12);
 addTree(t, 30); 
 addTree(t, 44);
@@ -180,6 +231,21 @@ TNODE* nodeX=findX(t, x);
 cout << nodeX->key;
 
 
+// min
+minValueOfTree(t);
+minValueOfRightTree(t);
 
+
+// delete leaf
+
+// deleteLeafTree(t, 50);
+// cout << "\nNLR: ";
+// NLR(t);
+
+
+// delete node with one child
+deleteWithOneChild(t, 44);
+cout << "\nNLR: ";
+NLR(t);
 return 0;
 }
