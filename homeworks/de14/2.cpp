@@ -91,6 +91,65 @@ int heightOfTree(TNODE* t) {
     return max(leftHeight, rightHeight) +1;
 }
 
+//print cac node tren tung muc
+void printLevel(TNODE* &t, int start, int level) {
+    if(isEmptyTree(t)) return ;
+    if(start==level) cout << t->key << " ";
+    else {
+        start++;
+        printLevel(t->pLeft, start, level);
+        printLevel(t->pRight, start, level);
+    }
+}
+
+void printLevelMain(TNODE* &t) {
+    int height=heightOfTree(t);
+    cout << "Print level of tree\n";
+    for(int i=0; i<height; i++) {
+        cout << "Level " << i << ": ";
+        printLevel(t, 0, i);
+    }
+}
+
+// length from root to x
+int lengthOfPath(TNODE* &t, int x) {
+    if(isEmptyTree(t)) return -1;
+    if(t->key==x) return 0;
+    if(x<t->key) {
+        int temp=lengthOfPath(t->pLeft, x);
+        if(temp!=-1) return temp+1;
+    } else {
+        int temp=lengthOfPath(t->pRight, x);
+        if(temp!=-1) return temp+1;
+    } 
+    return -1;
+}
+
+
+// kt cay nhi phan dung
+
+
+// Nếu cây rỗng, nó không phải là một cây nhị phân đúng.
+// Nếu một nút không có con trái và con phải, nó là một nút lá và là một phần của cây nhị phân đúng.
+// Nếu một nút có cả hai con, kiểm tra các con của nó xem chúng có phải là cây nhị phân đúng không.
+// Nếu một nút có một con trái hoặc một con phải, nó không phải là một cây nhị phân đúng.
+bool isStricklyBinaryTree(TNODE* t) {
+    if(isEmptyTree(t)) return true;
+    if(t->pLeft==nullptr && t->pRight==nullptr) return true;
+    if(t->pLeft!=nullptr && t->pRight!=nullptr) {
+        return isStricklyBinaryTree(t->pLeft) && isStricklyBinaryTree(t->pRight);
+    }
+    return false;
+}
+
+// tim node chua x
+TNODE* findX(TNODE* t, int x) {
+    if(isEmptyTree(t)) return 0;
+    if(x==t->key) return t;
+    if(x<t->key) findX(t->pLeft, x);
+    else findX(t->pRight, x);
+}
+
 int main() {
 friendlyNumber();
 TNODE* t;
@@ -109,5 +168,18 @@ NLR(t);
 cout << "\nThe sum of leaf node: " << countLeafNodes(t) << endl;
 cout << "The sum of child nodes that have only left or right node: " << countNodeOneByOne(t)<< endl;
 cout << "The height of tree: " << heightOfTree(t) << endl;
+printLevelMain(t);
+
+int x = 44; // Giá trị cần tìm đường đi
+cout << "\nThe length of path from root to " << x << ": " << lengthOfPath(t, x) << endl;
+
+cout << "Is strickly binary tree: " << isStricklyBinaryTree(t);
+
+cout << "\nNode contain x that have key: "; 
+TNODE* nodeX=findX(t, x);
+cout << nodeX->key;
+
+
+
 return 0;
 }

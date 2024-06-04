@@ -89,7 +89,7 @@ int main() {
 
 	init();
 	cout << connected(arr, row, col) << endl;
-	display(arr, row, col);
+	// display(arr, row, col);
 
 
 	    // Recording the end clock tick.
