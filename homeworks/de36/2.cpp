@@ -11,7 +11,7 @@ số của nó được đảo ngược. Hay nói cách khác là số đối x�
  11, 22, 33, 44, 55, 66, 77, 88, 99, 101 , 111, 121, 131, 141, 151, 161,
 171, 181, 191, 202, ... 
  */
-
+vector<int> palindromeNum;
 
 struct TNODE
 {
@@ -31,18 +31,18 @@ bool Palindrome(int data) {
 
 
 
-void initTree(TNODE* t) {
+void initTree(TNODE* &t) {
     t==NULL;
 }
 
 void insertNode(TNODE* &t, int data) {
      if(!t) {
 	t=new TNODE();
-	t->key=data;
+	t->Key=data;
 	t->pLeft=NULL;
 	t->pRight=NULL;
      } else {
-	if(data<t->key) insertNode(t->pLeft, data);
+	if(data<t->Key) insertNode(t->pLeft, data);
 	else insertNode(t->pRight, data);
      }
 }
@@ -55,7 +55,11 @@ void NLR(TNODE* &t) {
 }
 
 int countPalindrome(TNODE* &t) {
-	if(Palindrome(t->key)) return 1;
+	if(!t) return 0;
+	if(Palindrome(t->Key)) {
+		palindromeNum.push_back(t->Key);
+		return 1;
+	}
 	return countPalindrome(t->pLeft) + countPalindrome(t->pRight);
 }
 
@@ -80,8 +84,12 @@ cout << "NLR: ";
 NLR(t);
 
 
+cout << "\nThe number of palindrome number: " ;
+cout << countPalindrome(t) << endl;
 
-cout << countPalindrome(t);
+cout << "The palindrome number: ";
+for(auto it: palindromeNum) cout << it << " ";
+
 return 0;
 } 
 
