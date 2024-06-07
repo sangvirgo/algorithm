@@ -20,7 +20,7 @@ struct TNODE *pLeft;
 struct TNODE *pRight;
 } *TREE;
 
-bool reverseNum(int data) {
+bool Palindrome(int data) {
     int result=0, temp=data;
     while(temp!=0) {
 	result=result*10+temp%10;
@@ -36,6 +36,15 @@ void initTree(TNODE* t) {
 }
 
 void insertNode(TNODE* &t, int data) {
+     if(!t) {
+	t=new TNODE();
+	t->key=data;
+	t->pLeft=NULL;
+	t->pRight=NULL;
+     } else {
+	if(data<t->key) insertNode(t->pLeft, data);
+	else insertNode(t->pRight, data);
+     }
 }
 
 void NLR(TNODE* &t) {
@@ -45,11 +54,14 @@ void NLR(TNODE* &t) {
     NLR(t->pRight);
 }
 
-
+int countPalindrome(TNODE* &t) {
+	if(Palindrome(t->key)) return 1;
+	return countPalindrome(t->pLeft) + countPalindrome(t->pRight);
+}
 
 int main() {
 TNODE* t;
-/*
+
 initTree(t);
 insertNode(t, 60);
 insertNode(t, 25);
@@ -66,10 +78,10 @@ insertNode(t, 44);
 insertNode(t, 50);
 cout << "NLR: ";
 NLR(t);
-*/
 
-cout << reverseNum(100);
-cout << reverseNum(121);
+
+
+cout << countPalindrome(t);
 return 0;
 } 
 
