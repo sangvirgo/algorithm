@@ -14,7 +14,7 @@ void Dem (int a[], int n, int b[], int m){
         } else {
             j++;
             cout << i << ", ";
-            i=0;
+            // i=0;
         }
     }
 }

@@ -38,7 +38,7 @@ void friendlyNumber()
 {
     for (int i = 1; i <= 99; i++)
     {
-        if (gcd(i, reverseNumber(i)) == 1)
+        if ((gcd(i, reverseNumber(i)) == 1) && !vtFriendlyNumber[i])
         {
             vtFriendlyNumber[i] = vtFriendlyNumber[reverseNumber(i)] = 1;
         }
@@ -93,7 +93,7 @@ int countLeafNodes(TNODE *&t)
 {
     if (!isEmptyTree(t))
     {
-        if (t->pLeft == nullptr || t->pRight == nullptr)
+        if (t->pLeft == nullptr && t->pRight == nullptr)
             return 1;
         else
             return countLeafNodes(t->pLeft) + countLeafNodes(t->pRight);
