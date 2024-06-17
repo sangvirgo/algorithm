@@ -50,5 +50,9 @@ void BFS(int n) {
 int main() {
 init();
 BFS(1);
+
+
+
+
 return 0;
 }
