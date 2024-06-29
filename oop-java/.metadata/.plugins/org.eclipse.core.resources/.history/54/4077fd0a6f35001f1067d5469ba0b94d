@@ -1,0 +1,6 @@
+package test_oop;
+
+public class Car {
+	private int speed;
+	private int gal
+}
