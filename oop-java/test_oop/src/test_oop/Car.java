@@ -3,6 +3,21 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Car {
+//	contructor
+	
+	public Car() {}
+	
+	public Car(String name)  {
+		this(name, 0, false, null);
+	}
+	
+	public Car(String nameCar, int speed, boolean engineState, LocalDate manufactured) {
+		this.setNameCar(nameCar);
+		this.setSpeed(speed);
+		this.setEngineState(engineState);
+		this.setManufactured(manufactured);
+	}
+	
 	private String nameCar;
 	public String getNameCar() {
 		return nameCar;
@@ -30,14 +45,6 @@ public class Car {
 	}
 	
 	
-	private int gasoline;
-	public int getGasoline() {
-		return gasoline;
-	}
-	public void setGasoline(int gasoline) {
-		this.gasoline = gasoline;
-	}
-
 	
 	private LocalDate manufactured;
 	public LocalDate getManufactured() {
@@ -52,4 +59,10 @@ public class Car {
 	}
 	
 	
+	public void setTirePressures(int ... pressure) {
+		
+	}
+	
+	
+
 }

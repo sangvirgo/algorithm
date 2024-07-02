@@ -21,12 +21,17 @@ public class Main {
 		}
         
 
+		mach5.setTirePressures(32, 34, 45, 65);
+		car54.setTirePressures(new int[] {32, 34, 45, 65});
 		
+		Car mercedes=new Car("E200", 150, true, LocalDate.of(1995, 4, 20));
 		
+		for(Car car: new Car[] {mercedes}) {
+			System.out.printf("%s is %d years old and is traveling at %d mph%n", car.getNameCar(), car.getAge(), car.getSpeed());
+		}
 		
-		
-		
-		
+		Box rectangle=new Box(7.0, 6.0, 5.0);
+		rectangle.printBox();
 	}
 
 }
