@@ -1,6 +1,9 @@
 package test_oop;
 import java.time.LocalDate;
 import java.time.Period;
+import static java.lang.Math.min;
+
+
 
 public class Car {
 //	contructor
@@ -35,15 +38,14 @@ public class Car {
 		this.engineState = engineState;
 	}
 
-	
+	private static final int MAX_SPEED=110;
 	private int speed;
 	public int getSpeed() {
 		return speed;
 	}
-	public void setSpeed(int speed) {
-		this.speed = speed;
+	public void setSpeed(int newSpeed) {
+		this.speed = min(newSpeed, MAX_SPEED);
 	}
-	
 	
 	
 	private LocalDate manufactured;
@@ -66,3 +68,15 @@ public class Car {
 	
 
 }
+
+
+
+
+/*
+Trong ngôn ngữ lập trình Java, private static final int MAX_SPEED = 110; có ý nghĩa như sau:
+private: Đây là từ khóa chỉ rằng biến MAX_SPEED chỉ có thể truy cập trong cùng một class. Nó không thể được truy cập từ bên ngoài class đó.
+static: Từ khóa này biểu thị rằng biến MAX_SPEED thuộc về lớp (class) chứ không phải của các đối tượng (objects) được tạo từ lớp đó. Nó có nghĩa là chỉ có một bản sao của biến MAX_SPEED tồn tại cho mỗi lớp, không phụ thuộc vào số lượng đối tượng của lớp đó.
+final: Từ khóa này chỉ rằng giá trị của biến MAX_SPEED không thể thay đổi sau khi đã được gán một giá trị. Một khi đã gán giá trị MAX_SPEED = 110;, thì không thể gán lại giá trị mới cho biến này.
+int: Đây là kiểu dữ liệu của biến MAX_SPEED, có nghĩa là biến này là một số nguyên.
+MAX_SPEED = 110;: Đây là giá trị được gán cho biến MAX_SPEED, có nghĩa là MAX_SPEED có giá trị là 110.
+ */
