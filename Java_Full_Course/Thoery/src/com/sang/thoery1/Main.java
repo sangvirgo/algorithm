@@ -75,5 +75,10 @@ public class Main {
 		int y=10;
 		System.out.println(x/3);
 		System.out.println((double)y/3);
+		
+		
+		
+		
+		
 	}
 }
