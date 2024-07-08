@@ -24,10 +24,13 @@ For each person, print out yes if access is granted, no otherwise.
 
 Example
 inputCopy
+
 3
 hannah
 vieira
 limevaz
+
+Time taken by program is: 0.00018000000000000001
 outputCopy
 yes
 yes
@@ -50,7 +53,7 @@ dshfdhfeieakjsfh
 hdgjksdhfjlsadf
 bdjkhgsjflsjd
 jhitughkwrfrsdlkg
-vbvfhaejwkrhrefhdsjfh
+vbvfhaejwkrhrefh
  
 */
 
@@ -76,18 +79,16 @@ while(n--) {
     string s; cin >> s;
     bool found=false;
     for(int j=0; j<s.length()-1; j++) {
-        for(int i=2; i<=s.length()-j; i++) {
-            if(isPalindrome(s.substr(j, i))) {
+            if(isPalindrome(s.substr(j, 2))|| isPalindrome(s.substr(j, 3))) {
                 found=true;
                 break;
-            }
         }
         if(found) break;
     }
         if (found) {
-            cout << ++cnt<< "yes" << endl;
+            cout <<"\n"<<  ++cnt<< "yes" ;
         } else {
-            cout << ++cnt<< "no" << endl;
+            cout <<"\n"<< ++cnt<< "no";
         }
 }
 end=clock();
