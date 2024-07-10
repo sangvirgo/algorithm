@@ -6,6 +6,11 @@
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
 		<section name="ImportExportWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="514"/>
+			<item key="DIALOG_Y_ORIGIN" value="154"/>
+			<item key="DIALOG_WIDTH" value="647"/>
+			<item key="DIALOG_HEIGHT" value="550"/>
+			<item key="DIALOG_FONT_NAME" value="1|IBM Plex Sans|10.0|0|GTK|1|"/>
 		</section>
 	</section>
 </section>
