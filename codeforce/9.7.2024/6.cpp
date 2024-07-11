@@ -109,7 +109,7 @@ Press the cursor.
 // 9-2: 7
 // 2-0: 8
 
-int calcDistance(int pre, int cur) {
+int calcDistance(int &pre, int &cur) {
     if(pre==cur) {
         return 0;
     } else {
