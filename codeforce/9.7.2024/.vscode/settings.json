@@ -2,6 +2,7 @@
     "files.associations": {
         "*.cpp": "cpp",
         "*.code-snippets": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }
