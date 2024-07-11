@@ -91,21 +91,29 @@ Press the cursor.
 // 2-9: 7
 // 9-4: 5
 
-// 8361
+// 8361 24
 // 1-8: 7
 // 8-3: 5
 // 3-6: 3
 // 6-1: 5
 
+
+// 8543 16
+// 1-8: 7
+// 8-5: 3
+// 5-4: 1
+// 4-3: 1
+
+// 1920 27
+// 1-9: 8
+// 9-2: 7
+// 2-0: 8
+
 int calcDistance(int pre, int cur) {
-    // if(pre<cur) return max(pre+10-cur, cur-pre);
-    // else if(pre>cur) return max(pre-cur, cur+10-pre);
     if(pre==cur) {
         return 0;
-    } else if(pre<cur && pre!=0) {
-        return cur-pre;
     } else {
-        return max(abs(pre-cur),10- abs(pre-cur));
+        return abs(cur-pre);
     }
 }
 
@@ -117,6 +125,7 @@ while(t--) {
     int totalTime=4, previousPin=1;
     for(char it: pin) {
         int currentPin=it-'0';
+        if(currentPin==0) currentPin=10;
         totalTime+=calcDistance(previousPin, currentPin);
         previousPin=currentPin;
     }
