@@ -2,6 +2,8 @@ package com.sang.thoery1;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
+import java.util.Random;
 
 public class Main {
 	
@@ -68,17 +70,67 @@ public class Main {
 
 		String phoneNumber = scanner.findInLine("\\d{3}-\\d{3}-\\d{4}");
 		System.out.println("Phone Number: " + phoneNumber);
-		 */
 		
-		
+			
 		double x=10;
 		int y=10;
 		System.out.println(x/3);
 		System.out.println((double)y/3);
+
 		
+//		Graphical User Interface
+        String name = JOptionPane.showInputDialog("Enter your name:");
+
+        // Kiểm tra nếu người dùng nhấn Cancel hoặc đóng hộp thoại
+        if (name != null && !name.trim().isEmpty()) {
+            // Yêu cầu nhập tuổi và kiểm tra tính hợp lệ
+            int age = -1;
+            boolean validInput = false;
+            while (!validInput) {
+                try {
+                    String ageStr = JOptionPane.showInputDialog("Enter your age:");
+                    if (ageStr != null && !ageStr.trim().isEmpty()) {
+                        age = Integer.parseInt(ageStr);
+                        validInput = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please enter a valid age.");
+                    }
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid age. Please enter a number.");
+                }
+            }
+
+            // Hiển thị thông tin đã nhập
+            JOptionPane.showMessageDialog(null, "Hello " + name);
+            JOptionPane.showMessageDialog(null, "You are " + age + " years old");
+        } else {
+            JOptionPane.showMessageDialog(null, "You didn't enter a name.");
+        }
 		
+		Scanner scanner=new Scanner(System.in);
+		System.out.println("Enter side x");
+		double x=scanner.nextDouble();
+		System.out.println("Enter side y");
+		double y=scanner.nextDouble();
 		
+		double z=Math.sqrt((x*x)+(y*y));
+		System.out.println("The length of the hypotenuse z is: " + z);
 		
+		scanner.close();
+		
+		System.out.println("Round up to the nearest number: " +Math.round(z));
+		System.out.println("Round up: " +Math.ceil(z));
+		System.out.println("Round down: " +Math.floor(z));
+		Random random = new Random();
+		for(int i=0; i<3; i++) {
+			int x=random.nextInt(6)+1;
+			double y=random.nextDouble(7);
+			boolean z=random.nextBoolean();
+			System.out.println(x);
+			System.out.println(y);
+			System.out.println(z);
+		}
+*/
 		
 	}
 }

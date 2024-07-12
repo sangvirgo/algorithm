@@ -40,3 +40,16 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY ch.qos.logback.classic 1 0 2024-07-10 00:37:52.940
 !MESSAGE Logback config file: /home/soang/Algorithm/Java_Full_Course/Thoery/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
+!SESSION 2024-07-11 16:35:34.333 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product -data /home/soang/Algorithm/Java_Full_Course/Thoery
+
+!ENTRY ch.qos.logback.classic 1 0 2024-07-11 16:35:36.147
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-07-11 16:35:36.906
+!MESSAGE Logback config file: /home/soang/Algorithm/Java_Full_Course/Thoery/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
