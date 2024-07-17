@@ -12,6 +12,16 @@ c v0 v1 a l
 3: 4+2*4+1
 */
 int main() {
+int c, v0, v1, a, l, days=0, pageRead=0; cin >>c>> v0>> v1>>a >> l;
 
+while(pageRead<c) {
+    days++;
+    if(days==1) pageRead+=v0;
+    else {
+        v0=min(v1, v0+a);
+        pageRead+=v0-l;
+    }
+}
+cout << days;
 return 0;
 }
