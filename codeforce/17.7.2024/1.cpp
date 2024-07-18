@@ -3,8 +3,24 @@ using namespace std;
 #define MAX 100
 /*
 https://codeforces.com/problemset/problem/1992/B
+4
+
+5 3
+3 1 1
+
+5 2
+3 2
+
+11 4
+2 3 1 5
+
+16 6
+1 6 1 1 1 6
 */
 int main() {
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+cout.tie(NULL);
 int t; cin >> t;
 while(t--) {
     int n, k; cin >> n>>k;
@@ -16,30 +32,9 @@ while(t--) {
 
     sort(arr.begin(), arr.end());
 
-    int l=0, r=k-1;
-    while(l<r) {
-        if(arr[l]==1) {
-            l++;
-            arr[r]++;
-        } else {
-            arr[l]--;
-            r++;
-            arr.insert(arr.begin()+l, 1);
-            l--;
-        }
-        cnt++;
+    for(int i=0; i<k-1; i++) {
+        cnt+=arr[i]==1?1:2*arr[i]-1;
     }
-
-    // while(arr.size()>1) {
-    //     if(arr[0]==1) {
-    //         arr.erase(arr.begin());
-    //         arr[arr.size()-1]++;
-    //     } else  {
-    //         arr[0]--;
-    //         arr.insert(arr.begin(), 1);
-    //     }
-    //     cnt++;
-    // }
     cout << cnt<< endl;
 }
 return 0;

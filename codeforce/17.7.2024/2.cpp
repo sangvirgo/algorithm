@@ -1,38 +1,33 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
+#define ll long long
+#define mod 1000000007
+void solve()
+{
+  int n, k;
+  cin >> n >> k;
+  vector<int64_t> a(k);
+  for (int i = 0; i < k; i++)
+    cin >> a[i];
+  sort(a.begin(), a.end());
+  int cnt = 0;
+  for (int i = 0; i < k - 1; i++)
+  {
+    cnt += 2 * a[i] - 1;
+  }
+  cout << cnt << endl;
+}
+int main()
+{
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
 
-int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        int n, k;
-        cin >> n >> k;
-        vector<int> a(k);
-        for (int i = 0; i < k; ++i) {
-            cin >> a[i];
-        }
-        
-        sort(a.begin(), a.end());
-        
-        int cnt = 0;
-        int l = 0, r = k - 1;
-        
-        while (l < r) {
-            if (a[l] == 1) {
-                l++;
-                a[r]++;
-            } else if(a[l]!=1) {
-                a[l]--;
-                r++;
-                a.insert(a.begin() +1, 1);
-                l--;
-            }
-            cnt++;
-        }
-        
-        cout << cnt << endl;
-    }
-    return 0;
+  ll test;
+  cin >> test;
+  while (test--)
+  {
+    solve();
+  }
+  return 0;
 }
