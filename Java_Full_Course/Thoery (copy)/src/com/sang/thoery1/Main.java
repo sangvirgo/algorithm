@@ -174,7 +174,7 @@ public class Main {
 		System.out.println("             Sang             ".trim()); // => Sang
 		
 		System.out.println(name.replace('g', 'h'));
-
+		*/
 		
 		
 		// Wrapper 
@@ -229,8 +229,5 @@ public class Main {
         Integer b = 200;
         int comparison = a.compareTo(b); // So sánh a với b
         System.out.println("Comparison result: " + comparison); // -1 vì a < b
-		 */
-		
-		
 	}
 }
