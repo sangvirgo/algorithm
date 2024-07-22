@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
@@ -231,6 +232,23 @@ public class Main {
         System.out.println("Comparison result: " + comparison); // -1 vì a < b
 		 */
 		
+//		arrayList
+//		ArrayList là một lớp trong Java thuộc gói java.util, cung cấp một triển khai của giao diện List. ArrayList sử dụng một mảng động để lưu trữ các phần tử. Dưới đây là một số đặc điểm và tính năng chính của ArrayList:
+//
+//		Kích thước linh hoạt: ArrayList có khả năng tự động thay đổi kích thước khi bạn thêm hoặc xóa phần tử.
+//		Truy cập ngẫu nhiên: Bạn có thể truy cập trực tiếp vào bất kỳ phần tử nào bằng chỉ số của nó, vì ArrayList hỗ trợ truy cập ngẫu nhiên.
+//		Hiệu năng: Việc truy cập và cập nhật phần tử có hiệu suất cao (O(1)), nhưng việc chèn và xóa phần tử (đặc biệt là ở giữa danh sách) có thể chậm hơn so với một số cấu trúc dữ liệu khác (O(n)) do cần phải dịch chuyển các phần tử khác.
+	
+		ArrayList<String> foods =new ArrayList<>();
 		
+		foods.add("Pizza");
+		foods.add("Hotdog");
+		foods.add("Orange");
+		
+		foods.set(0, "Banana");
+		
+		for(String food: foods) {
+			System.out.println(food);
+		}
 	}
 }
