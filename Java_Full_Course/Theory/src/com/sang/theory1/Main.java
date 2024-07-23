@@ -1,8 +1,8 @@
-package com.sang.thoery1;
+package com.sang.theory1;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -230,7 +230,7 @@ public class Main {
         Integer b = 200;
         int comparison = a.compareTo(b); // So sánh a với b
         System.out.println("Comparison result: " + comparison); // -1 vì a < b
-		 */
+
 		
 //		arrayList
 //		ArrayList là một lớp trong Java thuộc gói java.util, cung cấp một triển khai của giao diện List. ArrayList sử dụng một mảng động để lưu trữ các phần tử. Dưới đây là một số đặc điểm và tính năng chính của ArrayList:
@@ -245,12 +245,116 @@ public class Main {
 		foods.add("Hotdog");
 		foods.add("Orange");
 		
-//		foods.set(0, "Banana");
-//		foods.remove(2);
+		foods.set(0, "Banana");
+		foods.remove(2);
+		
+//		System.out.println(foods.get(2));
 //		foods.clear();
 		
 		for(String food: foods) {
 			System.out.println(food);
 		}
+
+//		2D Array List
+		 ArrayList<String> fruits = new ArrayList<>();
+	        ArrayList<String> vegetables = new ArrayList<>();
+	        ArrayList<String> meats = new ArrayList<>();
+	        
+	        // Thêm giá trị vào ArrayList fruits
+	        fruits.add("Apple");
+	        fruits.add("Banana");
+	        fruits.add("Orange");
+	        
+	        // Thêm giá trị vào ArrayList vegetables
+	        vegetables.add("Carrot");
+	        vegetables.add("Broccoli");
+	        vegetables.add("Spinach");
+	        
+	        // Thêm giá trị vào ArrayList meats
+	        meats.add("Chicken");
+	        meats.add("Beef");
+	        meats.add("Pork");
+	        
+	        ArrayList<ArrayList<String>> foods=new ArrayList();
+	        
+	        foods.add(meats);
+	        foods.add(fruits);
+	        foods.add(vegetables);
+	        
+	        for(ArrayList food: foods) {
+	        	System.out.println(food);
+	        }
+			
+			int[] digits = {1, 3, 5, 3};
+			String name="Sang";
+			int age=21;
+			
+	        hello(name, age);
+
+		
+//		Overloading: Methods that share the same name but have different parameters 
+//		method name+ parameters=methods signature
+		
+		System.out.println(add(5, 6));
+		System.out.println(add(5, 3, 8));
+		 
+		
+		//Printf
+//		Chuỗi (String): %s
+//		so nguyên (int, long, short, byte): %d
+//		Số thực (float, double): %f
+//		Số thực với số chữ số thập phân cụ thể: %.nf
+//		Số nguyên không dấu (octal): %o
+//		Ký tự (char): %c
+//		Boolean: %b hoặc %B
+		
+//		System.out.printf("This is a format string %d", 123);
+//		System.out.printf("format", args);
+		
+		boolean myBoolean=true;
+		char myChar='S';
+		String myString="Tao ten Sang";
+		int myInt=244;
+		int myIntLarge=351551613;
+		double myDouble=3.354335;
+		System.out.printf("This is boolean: %b\nThis is char: %c\nThis is double: %.3f\n", myBoolean, myChar, myDouble);
+//		flag
+		System.out.printf("This is int: |%-10d|\n", myInt);
+		
+		System.out.printf("This is int: |%+d|\n", myInt);
+		System.out.printf("This is int: |%+d|\n", -myInt);
+
+		System.out.printf("This is int: |%010d|\n", myInt);
+		
+		System.out.printf("This is int: |%,10d|\n", myIntLarge);
+
+//		1. final với Biến
+//		Ý nghĩa: Khi một biến được khai báo là final, giá trị của biến đó không thể thay đổi sau khi được gán lần đầu tiên. Biến final phải được khởi tạo ngay khi khai báo hoặc trong khối khởi tạo của lớp.
+//
+//		2. final với Phương thức
+//		Ý nghĩa: Khi một phương thức được khai báo là final, nó không thể bị ghi đè (override) bởi các lớp con. Điều này giúp bảo vệ hành vi của phương thức không bị thay đổi bởi các lớp kế thừa.
+//	
+//		3. final với Lớp
+//		Ý nghĩa: Khi một lớp được khai báo là final, nó không thể được kế thừa. Điều này có nghĩa là bạn không thể tạo ra lớp con từ lớp final.
+//
+//		4. final với Tham số của Phương thức
+//		Ý nghĩa: Khi một tham số của phương thức được khai báo là final, giá trị của tham số đó không thể thay đổi trong phương thức. Điều này giúp đảm bảo rằng tham số không bị thay đổi trong quá trình thực thi của phương thức.
+	*/
 	}
+/*
+		static void hello(String name, int age) {
+			System.out.println("Hello " + name);
+			System.out.println("Your age is " + age);
+		}
+	
+		static int add(int a, int b) {
+			System.out.println("This is overloaded method #1");
+			return a+b;
+		}
+		
+		static int add(int a, int b, int c) {
+			System.out.println("This is overloaded method #2");
+			return a+b+c;
+ */
+//		}
 }
