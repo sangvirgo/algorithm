@@ -1,0 +1,11 @@
+package com.sang.theory2;
+
+public class Pizza {
+	private String bread;
+	private String sauce;
+	private String cheese;
+	
+	Pizza(String bread, String sauce, String cheese) {
+		
+	}
+}

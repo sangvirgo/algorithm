@@ -1,0 +1,15 @@
+package com.sang.theory2;
+
+//public abstract class Animal {
+//
+////	abstract
+//	abstract void makeSound();
+////	no abstract
+//	public void sleep() {
+//		System.out.println("This animal spleeps");
+//	}
+//}
+
+
+// use interface
+interface 

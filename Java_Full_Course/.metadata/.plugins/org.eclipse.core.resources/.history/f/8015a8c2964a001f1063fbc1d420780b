@@ -1,0 +1,14 @@
+package com.sang.theory2;
+
+//public class Dog extends Animal {
+//
+//	@Override
+//	void makeSound() {
+//		System.out.println("The driver is driving the car");
+//	}
+//	
+//}
+
+
+// use interface
+class Dog implements Animal

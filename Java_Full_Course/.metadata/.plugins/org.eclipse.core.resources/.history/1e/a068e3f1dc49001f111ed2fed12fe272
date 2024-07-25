@@ -1,0 +1,9 @@
+package com.sang.theory2;
+
+public class Vehicle {
+	double speed;
+	
+	void go() {
+		
+	}
+}

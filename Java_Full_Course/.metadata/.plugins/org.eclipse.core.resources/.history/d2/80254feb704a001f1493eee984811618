@@ -1,0 +1,9 @@
+package com.sang.theory2;
+
+public class Bicycle extends Vehicle{
+	void beep() {
+		
+		
+		System.out.println("This is beep of bicycle");
+	}
+}

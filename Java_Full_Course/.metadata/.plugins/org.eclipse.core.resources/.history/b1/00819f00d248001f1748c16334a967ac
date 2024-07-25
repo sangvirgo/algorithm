@@ -1,0 +1,8 @@
+package com.sang.theory2;
+
+public class DiceRoller {
+	
+	DiceRoller() {
+		
+	}
+}

@@ -1,0 +1,19 @@
+package com.sang.theory2;
+
+public class Car extends ve{
+	private String name="Sang";
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Car(String name) {
+		this.name = name;
+	}
+	
+	
+}
