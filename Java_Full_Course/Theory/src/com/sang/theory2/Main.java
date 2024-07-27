@@ -1,5 +1,7 @@
 package com.sang.theory2;
 
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -177,7 +179,7 @@ public class Main {
 		Dog dog1=new Dog();
 		System.out.println(dog1);
 
-		 */
+
 //		Khi bạn copy một đối tượng trong Java, việc sử dụng phép gán đơn giản như car1 = car2 không
 //		tạo ra một bản sao của đối tượng. Thay vào đó, nó chỉ sao chép tham chiếu (reference) của đối 
 //		tượng, nghĩa là car1 và car2 sẽ cùng tham chiếu đến cùng một đối tượng trong bộ nhớ. Do đó, mọi thay đổi đối với car1 sẽ ảnh hưởng đến car2 và ngược lại.
@@ -243,6 +245,30 @@ public class Main {
 		for(Vehicle x: racers) {
 			x.go();
 		}
+		
+		
+		Animal animal;
+		Scanner scanner=new Scanner(System.in);
+		
+		System.out.println("What animal do you want?");
+		System.out.println("1.Dog         2.Cat");
+		int choice=scanner.nextInt();
+		
+		if(choice==1) {
+			animal=new Dog();
+			animal.speak();
+		} else if(choice==2) {
+			animal=new Cat();
+			animal.speak();
+		} else {
+			animal=new Animal();
+			animal.speak();
+		}
+		 */
+		
+//		try catch 
+//		khi co loi thi nen try catch 
+//		catch(loi xuat hien e) ...
 	}
 
 }

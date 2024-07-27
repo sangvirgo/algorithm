@@ -1,18 +1,22 @@
 package com.sang.theory2;
 
-//public abstract class Animal {
-//
-////	abstract
+public class Animal {
+
+//	abstract
 //	abstract void makeSound();
-////	no abstract
-//	public void sleep() {
-//		System.out.println("This animal spleeps");
-//	}
-//}
+//	no abstract
+	public void sleep() {
+		System.out.println("This animal spleeps");
+	}
+	
+	public void speak() {
+		System.out.println("Animal goes ccccccc");
+	}
+}
 
 
 // use interface
-interface Animal {
-	void makeSound();
-	void spleep();
-}
+//interface Animal {
+//	void makeSound();
+//	void spleep();
+//}
