@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+/home/soang/Algorithm/Java_Full_Course/Theory/.metadata/.plugins/org.eclipse.jdt.core
+1865797976.index
+1175494123.index
+2899393442.index

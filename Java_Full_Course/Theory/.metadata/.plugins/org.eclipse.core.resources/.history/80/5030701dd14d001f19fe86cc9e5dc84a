@@ -1,0 +1,24 @@
+package com.sang.theory4;
+import  javax.swing.JFrame;
+import  javax.swing.JFrame;
+import  javax.swing.JLabel;
+import  javax.swing.ImageIcon;
+
+public class Labell extends JFrame {
+	Labell() {
+		JLabel label=new JLabel();
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(600, 600);
+		this.setVisible(true);
+		this.add(label);
+		ImageIcon image= new ImageIcon("/home/soang/Algorithm/Java_Full_Course/Theory/src/com/sang/theory4/hinhpeiuhinhpeiu.jpg");
+		
+		label.setText("Sang Sangggg");
+		label.setIcon(image);
+		label.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT, CENTER, RIGHT of imageicon
+		label.setVerticalTextPosition(JLabel.TOP); //
+		label.setForeground(new Color(0x00FF00));
+		
+	}
+}
