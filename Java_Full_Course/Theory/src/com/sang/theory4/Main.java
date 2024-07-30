@@ -5,9 +5,14 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		MyFrame myFrame=new MyFrame();
+//		MyFrame myFrame=new MyFrame();
 		
-
+//		Labell labell=new Labell();
+		
+//		Panelss panelss= new Panelss();
+		
+		Buttonn buttonn= new Buttonn();
+		
 	}
 
 }

@@ -16,7 +16,7 @@ public class MyFrame extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 //		no change the size of this
-		this.setResizable(false);
+//		this.setResizable(false);
 
 		this.setSize(500,500); // set x-dimension , set y-dimension
 		this.setVisible(true); //make this visible
@@ -28,5 +28,7 @@ public class MyFrame extends JFrame{
 		// set color
 //		this.getContentPane().setBackground(Color.green);
 		this.getContentPane().setBackground(new Color(255, 6, 4));
+		
+		
 	}
 }
