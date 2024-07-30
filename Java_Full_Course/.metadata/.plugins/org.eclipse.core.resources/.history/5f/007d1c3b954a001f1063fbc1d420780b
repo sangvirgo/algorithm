@@ -1,5 +1,0 @@
-package com.sang.theory2;
-
-public class Dog extends Animal {
-
-}

@@ -1,7 +1,0 @@
-package com.sang.theory2;
-
-public class Car {
-	private String name="Sang";
-	
-	
-}

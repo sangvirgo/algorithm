@@ -1,7 +1,0 @@
-package com.sang.theory2;
-
-public class Garage {
-	void Park(Car car) {
-		
-	}
-}
