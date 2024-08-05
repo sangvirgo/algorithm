@@ -54,9 +54,9 @@ int cnt=0; map<ll, int> g;
 vector<int> reminders(n+1, 0);
 for(int i=0; i<n; i++) cin  >> arr[i];
 
-
+// g[0]=1;
 for(int i=1; i<=n; i++) {
-    reminders[i]=(reminders[i-1]+arr[i-1]%m)%m;
+    reminders[i]=(reminders[i-1]+arr[i]%m)%m;
     cnt+=g[reminders[i]];
     g[reminders[i]]++;
 }
