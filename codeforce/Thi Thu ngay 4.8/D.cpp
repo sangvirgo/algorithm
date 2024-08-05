@@ -50,23 +50,17 @@ cout.tie(NULL);
 
 int n, m; cin >> n >>m;
 vector<int> arr(n);
-int cnt=0;
+int cnt=0; map<ll, int> g;
 vector<int> reminders(n+1, 0);
-for(int i=0; i<n; i++) {
-    int x; cin >> x;
-    if(x%m==0) cnt++;
-    arr[i]=x%m;
-}
+for(int i=0; i<n; i++) cin  >> arr[i];
+
 
 for(int i=1; i<=n; i++) {
-    reminders[i]=(reminders[i-1]+arr[i-1])%m;
-    if(reminders[i]%m==0) cnt++;
+    reminders[i]=(reminders[i-1]+arr[i-1]%m)%m;
+    cnt+=g[reminders[i]];
+    g[reminders[i]]++;
 }
 
-int l=1, r=n;
-while(l<r) {
-    if()
-}
 cout<< cnt;
 return 0;
 }
