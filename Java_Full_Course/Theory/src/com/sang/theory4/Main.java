@@ -11,8 +11,13 @@ public class Main {
 		
 //		Panelss panelss= new Panelss();
 		
-		Buttonn buttonn= new Buttonn();
+//		Buttonn buttonn= new Buttonn();
 		
+//		BorderLayoutt borderLayoutt=new BorderLayoutt();
+		
+//		FlowLayoutt flowLayoutt=new FlowLayoutt();
+		
+		GridLayoutt gridLayoutt=new GridLayoutt();
 	}
 
 }
