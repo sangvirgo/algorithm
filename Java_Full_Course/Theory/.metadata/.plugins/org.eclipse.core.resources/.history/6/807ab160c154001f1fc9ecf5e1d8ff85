@@ -1,0 +1,55 @@
+package com.sang.theory4;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class BorderLayoutt extends JFrame {
+
+    BorderLayoutt() {
+        // Tạo các đối tượng JPanel
+        JPanel panel1 = new JPanel();
+        JPanel panel2 = new JPanel();
+        JPanel panel3 = new JPanel();
+        JPanel panel4 = new JPanel();
+        JPanel panel5 = new JPanel();
+        JPanel panel6 = new JPanel();
+
+        // Thiết lập màu nền cho mỗi panel
+        panel1.setBackground(Color.red);     // Màu đỏ
+        panel2.setBackground(Color.green);   // Màu xanh lá cây
+        panel3.setBackground(Color.yellow);  // Màu vàng
+        panel4.setBackground(Color.magenta); // Màu hồng đậm
+        panel5.setBackground(Color.blue);    // Màu xanh dương
+        panel6.setBackground(Color.black);   // Màu đen
+
+        // Thiết lập bố cục của panel5 là BorderLayout
+        panel5.setLayout(new BorderLayout());
+
+        // Thiết lập kích thước ưu tiên cho mỗi panel
+        panel1.setPreferredSize(new Dimension(100, 100));
+        panel2.setPreferredSize(new Dimension(100, 100));
+        panel3.setPreferredSize(new Dimension(100, 100));
+        panel4.setPreferredSize(new Dimension(100, 100));
+        panel5.setPreferredSize(new Dimension(100, 100));
+        panel6.setPreferredSize(new Dimension(100, 100));
+
+        // Thiết lập các thuộc tính cho JFrame
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Đóng chương trình khi nhấn nút đóng
+        this.setSize(600, 600); // Kích thước của JFrame
+        this.setVisible(true); // Hiển thị JFrame
+        this.setLayout(new BorderLayout(10, 10)); // Thiết lập bộ quản lý bố cục với khoảng cách
+
+        // Thêm các panel vào JFrame với các vị trí của BorderLayout
+        this.add(panel1, BorderLayout.NORTH); // Phía trên
+        this.add(panel2, BorderLayout.WEST);  // Bên trái
+        this.add(panel3, BorderLayout.EAST);  // Bên phải
+        this.add(panel4, BorderLayout.SOUTH); // Phía dưới
+        this.add(panel5, BorderLayout.CENTER); // Ở giữa
+        
+        // Thêm panel6 vào panel5 ở vị trí BorderLayout.NORTH
+        panel5.add(panel6, BorderLayout.NORTH); // Phía trên trong panel5
+);
+    }

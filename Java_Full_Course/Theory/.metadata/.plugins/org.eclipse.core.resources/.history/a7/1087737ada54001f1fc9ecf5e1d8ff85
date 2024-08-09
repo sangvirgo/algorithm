@@ -1,0 +1,10 @@
+package com.sang.theory4;
+
+import javax.swing.JFrame;
+
+public class GridLayoutt extends JFrame{
+	GridLayoutt() {
+		
+		this
+	}
+}

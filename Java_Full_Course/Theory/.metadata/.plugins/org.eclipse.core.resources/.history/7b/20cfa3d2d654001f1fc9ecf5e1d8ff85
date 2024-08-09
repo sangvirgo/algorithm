@@ -1,0 +1,47 @@
+package com.sang.theory4;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class FlowLayoutt extends JFrame {
+	FlowLayoutt() {
+		JPanel panell=new JPanel();
+		panell.setPreferredSize(new Dimension(250, 250));
+		panell.setBackground(Color.lightGray);
+		panell.setLayout(new FlowLayout());
+		
+		panell.add(new JButton("1"));
+		panell.add(new JButton("2"));
+		panell.add(new JButton("3"));
+		panell.add(new JButton("4"));
+		panell.add(new JButton("5"));
+		panell.add(new JButton("6"));
+		panell.add(new JButton("7"));
+
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(600, 600);
+		this.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		this.setVisible(true);
+		this.add(panell);
+	}
+}
+
+
+/*
+ * FlowLayout là một trong các bộ quản lý bố cục (layout managers) của Java Swing,
+ *  được sử dụng để sắp xếp các thành phần theo hàng ngang, từ trái sang phải, và từ 
+ *  trên xuống dưới. Khi không còn đủ không gian trong một hàng, các thành phần sẽ được đẩy xuống hàng tiếp theo.
+
+Đặc điểm của FlowLayout
+Thứ tự hiển thị: Các thành phần được thêm vào container theo thứ tự chúng được thêm vào mã nguồn.
+Hướng: Mặc định, các thành phần được sắp xếp từ trái sang phải. Tuy nhiên, bạn có thể thay đổi hướng sắp xếp (left-to-right hoặc right-to-left).
+Khoảng cách: FlowLayout cho phép bạn thiết lập khoảng cách ngang và dọc giữa các thành phần.
+Căn chỉnh: Bạn có thể thiết lập căn chỉnh cho các thành phần (LEFT, CENTER, RIGHT).
+ */
+ * 

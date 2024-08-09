@@ -1,0 +1,13 @@
+package com.sang.theory4;
+
+import javax.swing.JFrame;
+
+public class GridLayoutt extends JFrame{
+	GridLayoutt() {
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(600, 600);
+		this.setVisible(true);
+		this.setLayout(new GridLayout());
+	}
+}

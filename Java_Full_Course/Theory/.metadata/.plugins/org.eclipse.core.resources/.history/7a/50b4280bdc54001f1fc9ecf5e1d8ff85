@@ -1,0 +1,31 @@
+package com.sang.theory4;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class GridLayoutt extends JFrame{
+	GridLayoutt() {
+		JPanel panell=new JPanel();
+		panell.setBackground(Color.lightGray);
+		panell.setLayout(new GridLayout(3,));
+		
+		panell.add(new JButton("1"));
+		panell.add(new JButton("2"));
+		panell.add(new JButton("3"));
+		panell.add(new JButton("4"));
+		panell.add(new JButton("5"));
+		panell.add(new JButton("6"));
+		panell.add(new JButton("7"));
+		
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(600, 600);
+		this.setVisible(true);
+		this.setLayout(new GridLayout());
+		this.add(panell);
+	}
+}

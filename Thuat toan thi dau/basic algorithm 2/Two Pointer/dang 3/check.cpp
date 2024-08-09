@@ -1,59 +1,66 @@
 #include <bits/stdc++.h>
+
+
 using namespace std;
 
-int heightDf(multiset<int>& arr) {
-    if (arr.size() <= 1) return 0; // Handle single element case correctly
-    return *arr.rbegin() - *arr.begin(); // Calculate height difference
+// Hàm nhân hai số lớn dưới dạng chuỗi
+string multiplyStrings(string num1, string num2) {
+    int n1 = num1.size();
+    int n2 = num2.size();
+    if (num1 == "0" || num2 == "0") return "0";
+    
+    vector<int> result(n1 + n2, 0);
+    
+    for (int i = n1 - 1; i >= 0; --i) {
+        for (int j = n2 - 1; j >= 0; --j) {
+            int mul = (num1[i] - '0') * (num2[j] - '0');
+            int sum = mul + result[i + j + 1];
+            result[i + j + 1] = sum % 10;
+            result[i + j] += sum / 10;
+        }
+    }
+    
+    string product = "";
+    for (int i = 0; i < result.size(); ++i) {
+        if (!(product.empty() && result[i] == 0)) {
+            product.push_back(result[i] + '0');
+        }
+    }
+    
+    return product;
+}
+
+// Hàm so sánh hai số lớn dưới dạng chuỗi
+int compareStrings(const string& str1, const string& str2) {
+    if (str1.size() > str2.size()) return 1;
+    if (str1.size() < str2.size()) return -1;
+    for (int i = 0; i < str1.size(); ++i) {
+        if (str1[i] > str2[i]) return 1;
+        if (str1[i] < str2[i]) return -1;
+    }
+    return 0;
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    string P;
+    cin >> P;
 
-    int n, le, d;
-    cin >> n >> le >> d;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int X = 1; X <= 100000; ++X) {
+        string current_product = to_string(X);
 
-    int res = 0, l = 0, r = 0;
-    multiset<int> temp;
-
-    while (r < n) {
-        // Extend the window to the right
-        temp.insert(a[r]);
-        r++;
-
-        // Check if the current window meets the length requirement
-        while ((r - l) >= le && heightDf(temp) <= d) {
-            res++;
-
-            // Continue extending to the right while it satisfies the conditions
-            if (r < n) {
-                temp.insert(a[r]);
-                r++;
-                if (heightDf(temp) > d) {
-                    r--;
-                    temp.erase(temp.find(a[r]));
-                    break;
-                }
-                if ((r - l) >= le && heightDf(temp) <= d) res++;
+        for (int Y = X; Y <= 100000; ++Y) {
+            if (compareStrings(current_product, P) == 0) {
+                cout << X << " " << Y << endl;
+                return 0;
             }
-        }
-
-        // Shrink the window from the left if it no longer satisfies the conditions
-        while (heightDf(temp) > d && l < r) {
-            temp.erase(temp.find(a[l]));
-            l++;
-        }
-
-        // Move left pointer to maintain the length requirement
-        if ((r - l) < le && r < n) {
-            temp.insert(a[r]);
-            r++;
+            
+            if (compareStrings(current_product, P) > 0) {
+                break;
+            }
+            
+            current_product = multiplyStrings(current_product, to_string(Y + 1));
         }
     }
 
-    cout << res << endl;
     return 0;
 }
