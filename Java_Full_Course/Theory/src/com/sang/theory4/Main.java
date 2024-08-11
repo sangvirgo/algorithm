@@ -17,7 +17,7 @@ public class Main {
 		
 //		FlowLayoutt flowLayoutt=new FlowLayoutt();
 		
-		GridLayoutt gridLayoutt=new GridLayoutt();
+//		GridLayoutt gridLayoutt=new GridLayoutt();
 	}
 
 }
