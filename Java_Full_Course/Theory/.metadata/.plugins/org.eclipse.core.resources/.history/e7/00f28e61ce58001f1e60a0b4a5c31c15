@@ -1,0 +1,30 @@
+package com.sang.theory5;
+
+import java.awt.Color;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+
+
+public class LayeredPanee extends JFrame {
+	LayeredPanee() {
+		JLabel label1=new JLabel();
+		label1.setOpaque(true);
+		label1.setBackground(Color.RED);
+		label1.setBounds();
+		
+		JLayeredPane layeredPanee= new JLayeredPane();
+		layeredPanee.setBounds(0, 0, 500, 500);
+		
+		
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(600, 600);
+		this.setVisible(true);
+		this.setLayout(null);
+		
+	}
+	
+	
+}
