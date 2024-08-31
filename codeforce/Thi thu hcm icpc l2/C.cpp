@@ -17,6 +17,7 @@ int main() {
 
     ll n; 
     cin >> n;
+    if(n<=2) cout << "NO";
     
     ll count1 = 0, count0 = 0;
 
@@ -31,10 +32,8 @@ int main() {
     }
 
 
-    int total_bits = log2(n) + 1;
-    count0 = total_bits - count1;
- 
-    if(count1 == count0) {
+    int total = count1 + count0;
+    if(total%2==0 && count1 == count0) {
         cout << "YES";
     } else {
         cout << "NO";
