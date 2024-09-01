@@ -1,37 +1,38 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
-const int MAXN = 200003;
-
-int n, k, q, d[MAXN], a[MAXN], s[MAXN];
-
-void update(int l, int r) {
-    ++d[l], --d[r + 1];
-}
-
-
-void buildPrefixSum() {
-    a[0] = s[0] = 0;
-    for (int i = 1; i < MAXN; i++) {
-        a[i] = a[i - 1] + d[i];
-        s[i] = s[i - 1] + (a[i] >= k);
-    }
-}
-
-int query(int a, int b) {
-    return s[b] - s[a - 1];
-}
-
+#define ll long long
+#define MAX 100
+const int MOD = 1e9 + 7;
+/*
+https://oj.vnoi.info/problem/nkseq
+*/
 int main() {
-    cin >> n >> k >> q;
-    for (int i = 0; i < n; i++) {
-        int l, r; cin >> l >> r;
-        update(l, r);
-    }
-    buildPrefixSum();
-    for (int i = 0; i < q; i++) {
-        int a, b; cin >> a >> b;
-        cout << query(a, b) << endl;
-    }
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+cout.tie(NULL);
+
+int n; cin >> n;
+vector<int> a(2*n+1, 0);
+for(int i = 1; i <= n; i++) {
+    cin >> a[i];
+    a[i+n] = a[i];
+}
+
+vector<ll> f(2*n+1, 0);
+for(int i=1; i<=2*n; i++) {
+    f[i]=f[i-1]+a[i];
+}
+
+int res = 0;
+ll temp=INT_MAX;
+for(int i=1; i<=n; i++) {
+    temp=min(temp,f[i]);
+}
+
+
+for(int i=1; i<=n; i++) {
+    
+}
+cout << res;
+return 0;
 }

@@ -12,24 +12,31 @@ cin.tie(NULL);
 cout.tie(NULL);
 
 int n; cin >> n;
-vector<int> a(2*n+2, 0);
+vector<int> a(2*n+1, 0);
 for(int i = 1; i <= n; i++) {
     cin >> a[i];
     a[i+n] = a[i];
 }
 
-vector<int> f(2*n+2, 0);
+vector<ll> f(2*n+1, 0);
 for(int i=1; i<=2*n; i++) {
     f[i]=f[i-1]+a[i];
+    // cout << f[i] << " ";
 }
+// cout << endl;
+int res = 0;
 
-int res=0;
+
+
 for(int i=1; i<=n; i++) {
-    if(f[i]>0 && f[i+1]>0) {
-        res++;
+    for(int j=i; j<=n+i-1; j++) {
+        if(f[j]<0) {
+            // cout<< f[i]<<endl;
+            res++;
+            break;
+        }
     }
 }
-
-cout << res;
+cout << n-res;
 return 0;
 }
