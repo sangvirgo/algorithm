@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define MAX 100
+#define MAX 1e6+3
 const int MOD = 1e9 + 7;
 /*
 BÀI 7C - KHÔNG CHIA HẾT
@@ -53,23 +53,23 @@ ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
 
-int n; cin >> n;
-vector<int> a(n);
-set<int> s;
-for(int i=0; i<n; i++) cin >> a[i], s.insert(a[i]);
-
-int res=0;
-sort(a.begin(), a.end(), greater<int>());
-
+int n, res=0; cin >> n;
+vector<ll> a(n);
+vector<ll> cnt(MAX, 0);
+vector<bool> check(MAX, false);
 for(int i=0; i<n; i++) {
-    bool ok=true;
-    for(int it: s) {
-        if(a[i]%it==0 && a[i]!=it) {
-            ok=false;
-            break;
-        }
+    cin >> a[i];
+    cnt[a[i]]++;
+}
+
+sort(a.begin(), a.end());
+for(int i=0; i<n; i++) {
+    if(cnt[a[i]]==1) res++;
+    if(check[a[i]]) continue;
+    check[a[i]] = true;
+    for(int j=a[i]; j<MAX; j+=a[i]) {
+        cnt[j]++;
     }
-    if(ok) res++;
 }
 
 cout << res;

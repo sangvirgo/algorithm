@@ -40,12 +40,10 @@ Cách 2: lấy cả 2 phần tử
 ll ncr[105][105];
 
 void precompute() {
-    int k;
-    for(int i=0; i<101; i++) {
-        ncr[i][0] = ncr[i][i] = 1;
-        k=i>>1;
-        for(int j=1; j<k+1; j++) {
-            ncr[i][j]=ncr[i][i-j]=(ncr[i-1][j]+ncr[i-1][j-1])%MOD;
+    for (int i = 0; i <= 100; i++) {
+        ncr[i][0] = ncr[i][i] = 1; // C(n, 0) = C(n, n) = 1
+        for (int j = 1; j < i; j++) {
+            ncr[i][j] = (ncr[i - 1][j] + ncr[i - 1][j - 1]) % MOD;
         }
     }
 }
@@ -68,40 +66,22 @@ ll res;
 
 if(data) {  // le
     res=0;
-
-    // chan + le = le
-    res+=odd*even;
-
     // only choose odd
     for(int i=1; i<=odd; i+=2) {
         res=(res+ncr[odd][i])%MOD;
     }
 
-    for(int i=1; i<=odd; i+=2) {
-        for(int j=2; j<=even; j+=2) {
-            res=(res+(ncr[i][odd]*ncr[j][even]))%MOD;
-        }
-    }
+    
 } else { // chan
     res=1;
-
     // chan cua le
     for(int i=2; i<=odd; i+=2) {
-        res+=ncr[i][odd];
+        res=(res+ncr[odd][i])%MOD;
     }
 
-    // full chan
-    for(int i=1; i<=even; i++) {
-        res+=ncr[i][even];
-    }
-
-    // chan cua le va full chan
-    for(int i=1; i<=even; i++) {
-        for(int j=2; j<=odd; j++) {
-            res=(res+(ncr[i][even]*ncr[j][odd]))%MOD;
-        }
-    }
 }
+
+res=(res*(1ll<<even))%MOD;
 
 cout << res;
 return 0;

@@ -21,9 +21,9 @@ for(int i = 1; i <= n; i++) {
 vector<ll> f(2*n+1, 0);
 for(int i=1; i<=2*n; i++) {
     f[i]=f[i-1]+a[i];
-    // cout << f[i] << " ";
+    cout << f[i] << " ";
 }
-// cout << endl;
+cout << endl;
 int res = 0;
 
 
