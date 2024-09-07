@@ -3,7 +3,7 @@ using namespace std;
 #define ll long long
 #define MAX 100
 /*
-
+01
 */
 string binaryString="";
 int n; 
