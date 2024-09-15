@@ -25,36 +25,31 @@ int main() {
   int n;
   cin >> n;
   vector<int> a(n);
-  map<int, int> cnt;
 
   for (int i = 0; i < n; ++i) {
       cin >> a[i];
-      cnt[a[i]]++;
   }
 
-  if(n==1) {
-    cout << a[0] << endl;
-    return 0;
-  }
-  if(n==2) {
-    cout << a[0]+ a[1] << endl;
-    return 0;
-  }
   int res=0;
-  sort(a.begin(), a.end(), greater<int>());
+  int temp=0;
+  int tong=0;
+  sort(a.begin(), a.end());
 
-
-  for (int i = i; i<=n; i++) {
-      int temp=0;
-      for(int j=a[i]; j<=MAX; j+=a[i]) {
-          if(cnt[j]>0) {
-              temp+=j;
-          } else {
-            break;
-          }
+  for(int i=1; i<=100; i++) {
+    for(int j=0; j<n; j++) {
+      tong=a[j];
+      temp=a[j];
+      for(int k=j+1; k<n; k++) {
+        if(a[k]-temp==i) {
+          temp+=i;
+          tong+=temp;
+        } else break;
       }
-      res=max(res, temp);
+      res=max(res, tong);
+    }
   }
+
+
 
   cout << res << endl;
   return 0;
