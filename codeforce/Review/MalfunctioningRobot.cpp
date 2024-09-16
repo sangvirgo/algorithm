@@ -13,14 +13,14 @@ cout.tie(NULL);
 
 int t; cin >> t;
 while(t--) {
-    int x1, y1, x2, y2; 
+    ll x1, y1, x2, y2; 
     cin >> x1 >> y1 >> x2 >> y2;
-    int absX= abs(x2-x1);
-    int absY= abs(y2-y1);
-    if(absX==absY) {
-        cout << absX+absY << endl;
+    ll absX= llabs(x2-x1);
+    ll absY= llabs(y2-y1);
+    if(absX%2==absY%2) {
+        cout << max(absX, absY)*2 << endl;
     } else {
-        cout << 2*min(absX, absY)+abs(absX-absY) << endl;
+        cout << 2*max(absX, absY)-1 << endl;
     }
 }
 return 0;

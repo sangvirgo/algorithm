@@ -19,9 +19,17 @@ while(t--){
     for(int i=0; i<n; i++)  cin >> a[i];
 
     int res=0;
+    ll sum=0;
+    map<ll, ll> cnt;
+    cnt[0]=1;
+
     for(int i=0; i<n; i++) {
-        
+        sum+=a[i];
+        int mod=(sum%d+d)%d;
+        res+=cnt[mod];
+        cnt[mod]++;
     }
+    cout << res << endl;
 }
 return 0;
 }
