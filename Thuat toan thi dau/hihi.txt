@@ -1,0 +1,257 @@
+1. Chuyển xâu sang số. (C++11)
+Có rất nhiều cách để chuyển xâu sang số trong C++, trong bài viết này mình sẽ giới thiệu với các bạn cách chuyển mà mình hay sử dụng nhất. Đó là sử dụng họ các hàm sto* . Dấu * ở đây có thể thay bằng các kiểu dữ liệu tương ứng mà các bạn muốn chuyển về. Gồm có: i (kiểu int), f (kiểu float), d (kiểu double) , l (kiểu long int), ld (kiểu long double), ll (kiểu long long), ul (kiểu unsigned long) và ull (kiểu unsigned long long).
+
+Thường thì các bạn chỉ sử dụng stoi, stoll hoặc stof và stod là đủ rồi.
+
+Các hàm sto* đều nhận vào 3 tham số gồm xâu ban đầu, con trỏ vị trí (không được sử dụng nhiều lắm, thường mình cho giá trị này là nullptr) và cuối cùng là hệ cơ số của dạng số tương ứng của xâu muốn chuyển.
+
+Ví dụ: 
+
+string binStr = "01010";
+string decStr = "1001";
+string doubleStr = "100.5";
+cout<<stoi(binStr, nullptr, 2)<<endl; // 10
+cout<<stoi(decStr)<<endl; // 1001
+cout<<stod(doubleStr)<<endl; // 100.5
+Lưu ý là nếu các bạn không khai báo con trỏ vị trí và hệ cơ số thì mặc định sẽ là null và hệ cơ số 10. 
+
+1 bài tập ví dụ có áp dụng hàm này để giải là bài beautifulNumber. Xem sol của bài này tại đây
+
+2. Tách xâu 
+Nếu các bạn đã làm việc với các ngôn ngữ khác như python, javascript sẽ cảm thấy tách xâu được ngăn cách bởi 1 kí tự nào đó rất dễ dàng, chỉ cần 1 câu lệnh split là xong. Nhưng trong C++ thì lại không được nhanh gọn như vậy. Tuy vậy, cách thực hiện tách xâu được ngăn cách bởi 1 kí tự nào đó cũng không phải là quá phức tạp trong C++. Chúng ta có thể sử dụng stringstream để thực hiện việc này. 
+
+Ví dụ: 
+
+string s1 = "This is a string with whitespaces";
+string s2 = "This,is,a,string,with,commas";
+stringstream ss1(s1);
+stringstream ss2(s2);
+string token;
+while(ss1 >> token)
+    cout<<token<<endl;
+cout<<"--------------\n";
+while(getline(ss2, token, ','))
+cout<<token<<endl;
+
+// Kết quả: 
+This
+is
+a
+string
+with
+whitespaces
+--------------
+This
+is
+a
+string
+with
+commas
+
+Để thực hiện cách này ta cần có 3 thứ, stringstream (được kế thừa từ iostream, xem chi tiết tại đây), 1 xâu để lưu tạm (trong ví dụ trên là token) và kí tự ngăn cách. 
+
+Câu lệnh chuẩn là getline([biến stringstream], [xâu lưu tạm], [kí tự ngăn cách]);
+
+nhưng nếu kí tự ngăn cách là khoảng trắng (' ') thì các bạn có thể rút ngắn bằng cách [biến stringstream] >> [xâu tạm].
+
+3. Khởi tạo 1 mảng, vector là 1 dãy số tăng dần (C++11)
+Sử dụng iota (C++11) ta sẽ có 1 cách để tạo 1 mảng, vector là 1 dãy số tăng dần bắt đầu từ 1 giá trị cho trước cực kì nhanh và gọn. 
+
+vector<int> a(10);
+int b[10];
+iota(begin(a), end(a), 1);
+iota(b, b + 10, 100);
+for(auto i:a)
+    cout<<i<<" ";
+cout<<endl;
+for(int i = 0; i < 10; ++i)
+    cout<<b[i]<<" ";
+
+// Kết quả: 
+1 2 3 4 5 6 7 8 9 10
+100 101 102 103 104 105 106 107 108 109
+Cú pháp rất đơn giản: iota([vị trí con trỏ đầu], [vị trí con trỏ cuối], [giá trị khởi đầu]. 
+
+Một điều nữa là có thể với nhiều bạn sẽ thắc mắc về đoạn: 
+
+for(auto i:a)
+    cout<<i<<" ";
+cout<<endl;
+Đây được gọi là Range-based for loop được giới thiệu từ C++11. Các bạn có thể xem qua giới thiệu về auto cũng như range-based for loop tại đây
+
+4. Xóa các phần tử trùng lặp trong vector
+Sử dụng  std::unique kết hợp với std::sort sẽ giúp bạn có thể xóa các phần tử trùng lặp trong mảng, vector trong C++. 
+
+vector<int> a{1,1,2,3,4,5,6,1,4};
+sort(begin(a), end(a));
+a.erase(unique(begin(a), end(a)), end(a));
+for(auto i:a)
+    cout<<i<<" ";
+
+// Kết quả:
+1 2 3 4 5 6
+Ưu điểm của cách này là nhanh, gọn lẹ (chỉ 2 dòng) nhưng có nhược điểm là sẽ không giữ được thứ tự của các phần tử trong mảng ban đầu. 
+
+5. Tìm phần tử thứ k trong mảng/vector sau khi sắp xếp theo thứ tự tăng dần. 
+Để thực hiện được điều này ta có thể sử dụng nth_element. nth_element cơ bản nhận 3 tham số RandomAccessIterator first, RandomAccessIterator kth, RandomAccessIterator last. Hàm này sẽ thực hiện sắp xếp lại các phần tử trong khoảng [first, last) sao cho phần tử thứ k sau bước sắp xếp này sẽ đúng là phần tử thứ k sau khi sắp xếp lại mảng/vector đó theo thứ tự tăng dần. Ngoài ra nth_element còn nhận tham số thứ 4 đó là hàm so sánh do người dùng tự định nghĩa. 
+
+Ví dụ: 
+
+vector<int> a{2, 3, 5, 1, 5, 10, 0};
+nth_element(begin(a), begin(a) + 3, end(a));
+cout << a[3] << endl;
+
+// 3
+Chú ý là việc sắp xếp của nth_element không phải là sắp xếp theo thứ tự tăng dần mà chỉ đơn giản là đảm bảo phần tử thứ k nằm đúng vị trí của nó.
+
+vector<int> a{2, 3, 5, 1, 5, 10, 0};
+nth_element(begin(a), begin(a) + 3, end(a));
+cout << a[3] << endl;
+for (auto i : a)
+    cout << i << " ";
+cout << endl;
+sort(begin(a), end(a));
+for (auto i : a)
+    cout << i << " ";
+
+// Kết quả: 
+3
+1 0 2 3 5 10 5
+0 1 2 3 5 5 10
+Độ phức tạp của nth_element là O(n).
+
+Có 1 bài tập trên SPOJ PTIT có thể áp dụng nth_element để giải quyết và cho hiệu quả cực kì ấn tượng. Link bài tại đây: đây, lời giải tại đây
+
+6. Kiểm tra 1 phần tử có nằm trong 1 mảng/vector đã được sắp xếp.
+Muốn tìm kiếm 1 phần tử bên trong 1 mảng/vector đã được sắp xếp 1 cách nhanh nhất thì có thể kể đến việc sử dụng thuật toán tìm kiếm nhị phân. Đây là đoạn code của thuật toán này. 
+
+int binarySearch(vector<int> arr, int value){
+    int l = 0, r = arr.size() - 1;
+    while (l <= r) { 
+        int mid = l + (r - l) / 2; 
+        if (arr[mid] == value) 
+            return mid; 
+        if (arr[mid] < value) 
+            l = mid + 1; 
+        else
+            r = mid - 1; 
+    } 
+    return -1; 
+}
+
+// Trong hàm main.
+vector<int> a{2,3,4,5,6,10};
+int x = 10;
+int index = binarySearch(a, x);
+cout<<index<<endl; // 5 - là vị trí của phần tử x cần tìm.
+Tuy nhiên, nếu các bạn chỉ muốn kiểm tra xem phần tử đó có nằm trong mảng/vector hay không mà không quan tâm về vị trí của phần tử đó trong mảng thì C++ cung cấp 1 hàm có tên là binary_search. 
+
+Thay vì viết 1 hàm như trên, chúng ta có thể viết: 
+
+vector<int> a{2, 3, 4, 5, 6, 10};
+int b[6] = {2, 3, 4, 5, 6, 7};
+int x = 10;
+bool isInVector = binary_search(begin(a), end(a), x);
+bool isInArray = binary_search(b, b + 6, x);
+if (isInVector)
+    cout << "Found in vector\n";
+else
+    cout << "Not found in vector\n";
+if (isInArray)
+    cout << "Found in array\n";
+else
+    cout << "Not found in array\n";
+
+// Kết quả:
+Found in vector
+Not found in array
+Các bạn chú ý rằng giá trị trả về của binary_search là 1 boolean value. 
+
+7. Code Snippet để xem giá trị của 1 biến nào đó. 
+#define whatIs(x) cerr << "Line " << __LINE__ << ": " << #x << " = " << (x) << endl
+Đoạn code snippet trên sẽ cho ta biết được dòng mà chúng ta log ra biến cũng như giá trị của biến đó. 
+
+Ví dụ: 
+
+vector<int> a{1,2,3,4,5};
+whatIs(a[0]);
+string s = "This is a string";
+whatIs(s);
+
+// Kết quả:
+Line 147: a[0] = 1
+Line 149: s = This is a string
+
+// Vị trí dòng 147 và 149 là vị trí mình viết gọi whatIs(..) trong file code của mình.
+8. Tìm kiếm vị trí của đầu tiên lớn hơn/lớn hơn hoặc bằng 1 phần tử cho trước trong 1 mảng/vector đã được sắp xếp
+C++ cung cấp cho ta 2 hàm:
+
+std::lower_bound(): cho phép tìm ra vị trí của phần tử đầu tiên lớn hơn hoặc bằng 1 phần tử cho trước trong 1 mảng/vector đã được sắp xếp. 
+
+std:upper_bound(): cho phép tìm ra vị trí của phần tử đầu tiên lớn hơn 1 phần tử cho trước trong 1 mảng/vector đã được sắp xếp.
+
+2 hàm này thông thường nhận vào các tham số gồm có: first, last (đây là 2 Forward iterators ), giá trị của phần tử.
+
+Chú ý rằng: giá trị trả về của 2 hàm này sẽ trả về con trỏ tới vị trí cần tìm, nếu như trong trường hợp không thể tìm ra thì sẽ trả về last. Nếu bạn muốn lấy giá trị vị trí của phần tử tìm được trong mảng/vector thì chỉ việc lấy giá trị trả về đó trừ đi first là xong.
+
+Ví dụ: 
+
+vector<int> a{1,2,3,4,5};
+int v1 = 2, v2 = 6;
+int index1 = lower_bound(begin(a), end(a), v1) - begin(a);
+int index2 = upper_bound(begin(a), end(a), v2) - begin(a);
+cout<<index1; // 1 - a[1] = 2 >= 2
+cout<<index2; // 5 - Không tìm được phần tử nào lớn hơn 6 trong vector a nên kết quả của index2 sẽ chính là độ dài của vector a
+Với mảng thì cũng tương tự như vậy. 
+
+Có rất nhiều bài tập sử dụng hàm này, ví dụ như bài  countWeirdNumbers. Sol tại đây
+
+9. Tạo 1 set từ 1 mảng/vector
+vector<int> a{2, 2, 3, 3, 4, 5, 6};
+int b[6] = {2, 2, 2, 5, 6, 7};
+set<int> s1(begin(a), end(a));
+set<int> s2(b, b + 6);
+for (auto i : s1)
+    cout << i << " ";
+cout << endl;
+for (auto i : s2)
+    cout << i << " ";
+10. Chuyển 1 số sang dạng nhị phân
+Để chuyển 1 số sang dạng nhị phân chúng ta có thể sử dụng bitset. 
+
+Ví dụ: 
+
+int n = 100;
+string s = bitset<8>(n).to_string();
+cout << s << endl;
+
+// Kết quả
+01100100
+Thực chất thì bạn chỉ cần viết bitset<8>(n) là đủ, tuy nhiên để sử dụng thì chúng ta thường dùng ở dạng xâu nên sử dụng to_string() để convert kết quả về dạng xâu.
+
+8 ở đây là độ dài của bitset mà bạn muốn, bạn có thể đặt các giá trị khác ví dụ như 3,4,32,64..
+
+Chú ý nếu độ dài mà bạn set vào mà nhỏ hơn độ dài của số đó sau khi convert sang dạng nhị phân thì số sau khi convert sang dạng nhị phân sẽ tự động bị cắt đi 
+
+Ví dụ:
+
+int n = 100;
+auto s = bitset<3>(n).to_string();
+cout << s << endl;
+
+// Kết quả: 
+100
+Còn nếu độ dài mà bạn set vào lớn hơn độ dài của số đó sau khi convert sang dạng nhị phân thì số sau khi được convert sẽ được thêm 0 ở đâu để cho đủ độ dài. Như trong ví dụ đầu tiên thì 1 số 0 đã được thêm vào đầu để đảm bảo chuỗi kết quả có đủ 8 kí tự. 
+
+Nếu bạn muốn cắt lấy vị trí chính xác của xâu sau khi chuyển (trong trường hợp xâu nhị phân thừa số 0 ở đầu) thì có thể làm như sau: 
+
+int n = 100;
+auto s = bitset<8>(n).to_string();
+string exactValue = s.find('1') != string::npos ? s.substr(s.find('1')) : "0";
+cout << s << endl;
+cout << exactValue << endl;
+
+// Kết quả: 
+01100100
+1100100
+Để làm được điều đó mình chỉ đơn giản là cắt xâu từ vị trí xuất hiện đầu tiên của kí tự '1'. Tuy nhiên chú ý là có trường hợp xâu toàn số 0, ta phải để ý trường hợp đó. 
