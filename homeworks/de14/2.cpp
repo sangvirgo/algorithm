@@ -175,7 +175,7 @@ int lengthOfPath(TNODE *&t, int x)
 // Nếu một nút không có con trái và con phải, nó là một nút lá và là một phần của cây nhị phân đúng.
 // Nếu một nút có cả hai con, kiểm tra các con của nó xem chúng có phải là cây nhị phân đúng không.
 // Nếu một nút có một con trái hoặc một con phải, nó không phải là một cây nhị phân đúng.
-bool isStricklyBinaryTree(TNODE *t)
+bool isStricklyBinaryTree(TNODE *t)vhjfchdxfyhfcy
 {
     if (isEmptyTree(t))
         return true;
