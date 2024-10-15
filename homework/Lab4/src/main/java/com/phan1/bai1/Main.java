@@ -50,7 +50,7 @@ public class Main {
                             System.out.print("Enter level: ");
                             int level = scanner.nextInt();
                             CanBo worker = new CongNhan(name, age, gender, address, level);
-                            quanLyCanBo.add(worker);  // Sửa lại cho đúng đối tượng
+                            quanLyCanBo.add(worker);  
                             System.out.println(worker.toString());
                             scanner.nextLine();
                             break;
