@@ -5,6 +5,8 @@
 package com.bai2NangCao;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -54,8 +56,20 @@ public class DSSinhVien {
         System.out.println("(Tinh tong so sv theo xep loai hien thi vao "+n+" o tren)");
     }
 
+    Comparator<SinhVien> com=new Comparator<SinhVien>() {
+        @Override
+        public int compare(SinhVien o1, SinhVien o2) {
+            return o1.getMSSV().compareTo(o2.getMSSV());
+        }
+    };
+    
     public void sortByMSSV() {
-        list.sort((o1, o2)->o1.getMSSV().compareTo((o2.getMSSV())));
+        Collections.sort(list, com);
+//        list.sort((o1, o2) -> o1.getMSSV().compareTo(o2.getMSSV()));
+//        list.sort((o1, o2)->o1.getMSSV().compareTo((o2.getMSSV())));
+
+
+
     }
 
     public void findByName() {
