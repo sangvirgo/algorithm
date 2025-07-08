@@ -3,6 +3,7 @@
         "*.cpp": "cpp",
         "*.code-snippets": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "stdexcept": "cpp"
     }
 }
