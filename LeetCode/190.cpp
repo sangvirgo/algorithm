@@ -14,10 +14,10 @@ public:
         string binary_string = bits.to_string();
         uint32_t rs=0;
         for(int i=0; i<binary_string.length(); i++) {
-            rs+=stoi(binary_string[i])*pow();
+            int bit_value = binary_string[i] - '0'; 
+            rs+=bit_value*pow(2, i);
         }
-        uint32_t input=stoul(binary_string);
-        return input;
+        return rs;
     }
 };
 
