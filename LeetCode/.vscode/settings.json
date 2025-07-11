@@ -4,6 +4,7 @@
         "*.code-snippets": "cpp",
         "iostream": "cpp",
         "ostream": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "cmath": "cpp"
     }
 }
