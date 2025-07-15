@@ -12,29 +12,18 @@ class Solution {
 public:
     vector<string> summaryRanges(vector<int>& nums) {
         vector<string> rs;
-        for(int i=0; i<nums.size()-1; i++) {
-            int j=i;
-            vector<int> temp;
-            while(1) {
-                temp.push_back(nums[j]);
-                j++;
-                if(nums[j]!=nums[j+i]-1) break;
+        for(int i=0; i<nums.size(); i++) {
+            int fisrtNum=nums[i];
+            bool isOne=true;
+            while(nums[i]==nums[i+1]-1 && i<nums.size()) {
+                i++;
+                isOne=false;
             }
-            i+=j-1;
-            if(temp.size()==1) {
-                string tempp="";
-                tempp+="\"";
-                tempp+=to_string(temp[0]);
-                tempp+="\"";
-                rs.push_back(tempp);
+            int lastNum=nums[i];
+            if(isOne) {
+                rs.push_back(to_string(fisrtNum));
             } else {
-                string tempp="";
-                tempp+="\"";
-                tempp+=to_string(temp[0]);
-                tempp+="->";
-                tempp+=to_string(temp[temp.size()-1]);
-                tempp+="\"";
-                rs.push_back(tempp);
+                rs.push_back(to_string(fisrtNum) + "->" + to_string(lastNum));
             }
         }
         return rs;
