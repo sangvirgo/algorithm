@@ -10,16 +10,20 @@ const int MOD = 1e9 + 7;
 class Solution {
 public:
     int arrangeCoins(int n) {
-        int rs=0;
-        for(int i=1; i<=n; i++) {
-            n-=i;
-            if(n>=0) {
-                rs++;
+        long long rs=0;
+        long long l=1;
+        long long r=n;
+        while(l<=r) {
+            long long mid = l + (r-l)/2;
+            long long coin=mid*(mid+1)/2;
+            if(coin<=n) {
+                rs=mid;
+                l=mid+1;
             } else {
-                break;
+                r=mid-1;
             }
         }
-        return rs;
+        return (int)rs;
     }
 };
 
