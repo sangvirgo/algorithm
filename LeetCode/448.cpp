@@ -10,14 +10,24 @@ const int MOD = 1e9 + 7;
 class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
-        vector<int> cnt(100007,0);
+        int n = nums.size();
+        // Mảng đếm chỉ cần kích thước n+1
+        vector<int> cnt(n + 1, 0);
         vector<int> rs;
-        for(auto it:nums) {
-            cnt[it]=1;
+
+        // Đánh dấu các số đã xuất hiện
+        for(int num : nums) {
+            cnt[num] = 1;
         }
-        for(int i=1; i<=100000; i++) {
-            if(!cnt[it])
+
+        // Duyệt trong phạm vi đúng: từ 1 đến n
+        for(int i = 1; i <= n; i++) {
+            // Nếu số i chưa được đánh dấu, nó là số bị thiếu
+            if (cnt[i] == 0) {
+                rs.push_back(i);
+            }
         }
+        return rs;
     }
 };
 
