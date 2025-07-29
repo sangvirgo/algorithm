@@ -10,20 +10,9 @@ const int MOD = 1e9 + 7;
 class Solution {
 public:
     bool repeatedSubstringPattern(string s) {
-        if(s.size()%2!=0) return 0;
-        int n=s.size();
-        for(int i=1; i<=n/2; i++) {
-            string temp="";
-            string ss=s.substr(0, i);
-            while(temp.size()<n) {
-                temp+=ss;
-            }
-            cout << temp << endl;
-            if(temp==s) {
-                return true;
-            }
-        }
-        return false;
+        string ss=s+s;
+        string trimed=ss.substr(1, ss.size()-2);
+        return trimed.find(s)!=string::npos;
     }   
 };
 
@@ -32,7 +21,11 @@ ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 cout.tie(NULL);
 
+string s="babbabbabbabbab";
+string ss="ababab";
 Solution a;
 cout << a.repeatedSubstringPattern("babbabbabbabbab");
+
+cout << bool(s.find(ss)==string::npos);
 return 0;
 }
