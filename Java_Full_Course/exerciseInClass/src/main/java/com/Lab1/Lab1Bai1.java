@@ -16,5 +16,18 @@ public class Lab1Bai1 {
             double diemTB=scanner.nextDouble();
             System.out.printf("%s %f điểm", hoTen, diemTB);
             scanner.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
