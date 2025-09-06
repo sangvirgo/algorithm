@@ -14,6 +14,7 @@ public:
     int m = nums2.size();
     int l = 0, r = (n != 0 && m != 0) ? min(n, m) : max(n, m);
     while (l <= r) {
+      happy birthday to me
     }
   }
 };
