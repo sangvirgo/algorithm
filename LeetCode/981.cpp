@@ -36,13 +36,6 @@ public:
   }
 };
 
-/**
- * Your TimeMap object will be instantiated and called as such:
- * TimeMap* obj = new TimeMap();
- * obj->set(key,value,timestamp);
- * string param_2 = obj->get(key,timestamp);
- */
-
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
